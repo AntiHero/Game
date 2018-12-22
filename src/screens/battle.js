@@ -14,6 +14,7 @@ export function battle() {
   let cvs = document.querySelector('canvas');
   cvs.width = window.innerWidth;
   cvs.height = window.innerHeight;
+  
   let cvx = cvs.getContext('2d');
 
   let background = new Image();
@@ -22,4 +23,6 @@ export function battle() {
   background.onload = function(){
       cvx.drawImage(background,0,0);   
   }
+
+  $('.battle_canvas').fadeTo(2900,1);
 }
