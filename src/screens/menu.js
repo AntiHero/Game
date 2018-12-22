@@ -1,11 +1,11 @@
 import $ from 'jquery';
-
+import {battle} from './battle';
 import {playerName} from './nickname';
 
 export default function menu() {
   $('.nickname').remove();
   let menu = `<div class="menu">
-    <div class="menu_player_name"></div>
+  <div class="menu_player_name"></div>
     <ul class="menu_list">
       <li class="game">Game</li>
       <li class="options">Score</li>
@@ -15,4 +15,8 @@ export default function menu() {
   `
   $('body').append(menu);
   $('.menu_player_name').append(playerName.name);
+
+  $('.game').bind("click", function(){
+    battle();
+  });
 }
