@@ -1,12 +1,9 @@
 import './css/main.css';
 import $ from 'jquery';
-import intro from './intro';
+import intro from './screens/intro';
+import menu from './screens/menu';
 
-window.onload = function() {$(function() {
+$(document).ready(function() {
   intro();
-})};
-
-// $(function() {$(document).keypress(function() {
-  
-// })});
+});
 

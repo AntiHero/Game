@@ -24,6 +24,7 @@
   bottom: 20px;
   font-size: 22px;
   color: #da2525;
+  animation: blinker 1s linear infinite;
 }
 
 .nickname{
@@ -55,10 +56,11 @@
   width: 200px;
   height: 20px;
   margin-top: 20px;
-  border: 2px solid #da2525;
+  border: 0px solid;
   border-radius: 4px;
   color: #da2525;
-  font-size: 16px;
+  font-weight: 800;
+  font-size: 26px;
   background-color: #0f0a0a;
 }
 
@@ -67,15 +69,75 @@
   color: #130b0b;
   font-weight: 800;
   font-size: 18px;
-  border: none;
+  border: 1px solid #da2525;
+  border-radius: 8px;
   height: 30px;
   width: 70px;
   text-transform: uppercase;
-  border-radius: 2px;
   outline: none;
   background-color: #da2525;
 }
 
+::placeholder {
+  color: #da2525;
+}
+
+.nickname_input:focus::placeholder{
+  color: transparent;
+}
+
 .nickname_button:focus{
   background-color: #bb1f1f;
+}
+
+.menu{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  align-content: center;
+  top: 0;
+  left: 0;
+  background-color: #0f0a0a;
+}
+
+.menu_list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  padding: 0;
+  top: 35%;
+  font-size: 36px;
+  color: #da2525;
+  text-transform: uppercase;
+  list-style: none;
+}
+
+.menu_list li{
+  padding: 10px 0;
+}
+
+.menu_list li:hover{
+  cursor: pointer;
+  color: #bb1f1f;
+}
+
+.menu_player_name{
+  position: absolute;
+  display: inline-block;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #bb1f1f;
+}
+
+@keyframes blinker{
+  80%{
+    opacity: 0.5;
+  }
 }
