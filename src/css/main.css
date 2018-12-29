@@ -2,9 +2,11 @@
 @import url('https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe');
 
 html, body {
-  width: 100%;
-  height: 100%;
   margin: 0;
+}
+
+li, a{
+  text-decoration: none;
 }
 
 .intro {
@@ -65,7 +67,7 @@ html, body {
   text-align: center;
   text-transform: uppercase;
   outline: none;
-  width: 200px;
+  width: 250px;
   height: 20px;
   margin-top: 20px;
   border: 0px solid;
@@ -91,7 +93,7 @@ html, body {
   background-color: #da2525;
 }
 
-::placeholder {
+.nickname_input::placeholder {
   color: #da2525;
 }
 
@@ -117,19 +119,82 @@ html, body {
   background-color: #0f0a0a;
 }
 
-.menu_list{
+.menu_middle{
+  width: 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   position: absolute;
   padding: 0;
-  top: 35%;
+  top: 33%;
   font-size: 36px;
   color: #da2525;
   text-transform: uppercase;
   list-style: none;
 }
 
+.menu_item, .menu_item a{
+  color: #da2525;
+}
+
+.menu_btn{
+  display: block;
+}
+
+.menu_item{
+  padding: 7px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menu_item:hover{
+  color: #bb1f1f;
+}
+
+.menu_item a:hover{
+  color: #bb1f1f;
+}
+
+.menu_small{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  transition: max-height 1s;
+  max-height: 0;
+}
+
+.menu_small a{
+  padding: 5px 26px;
+  display: block;
+  margin: 4px 0;
+  position: relative;
+  transition: 0.3s;
+  opacity: 0.3;
+}
+
+.menu_small a:hover{
+  opacity: 1;
+}
+
+/* .menu_item:hover .menu_small{
+  max-height: 10em;
+} */
+
+/* .menu_small a:before{
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 100%;
+  background: #bb1f1f;
+  left: 0;
+  top:0;
+} */
+
+/* 
 .menu_list li{
   padding: 10px 0;
 }
@@ -137,7 +202,7 @@ html, body {
 .menu_list li:hover{
   cursor: pointer;
   color: #bb1f1f;
-}
+} */
 
 .menu_player_name{
   position: absolute;
@@ -150,23 +215,180 @@ html, body {
   color: #bb1f1f;
 }
 
-.battle_player_name{
+.mode_list{
+  display: none;
+  position: absolute;
+  height: 0px;
+  list-style-type: none;
+  font-size: 24px;
+}
+
+.player_name, .enemy_name{
   position: absolute;
   display: inline-block;
   top: 10px;
-  left: 10px;
   font-size: 18px;
   font-weight: 800;
+  font-family: 'ZCOOL KuaiLe', cursive;
   text-transform: uppercase;
-  color: #bb1f1f;
+  color: #d1f023;
+}
+
+.enemy_name{
+  right: 10px;
+}
+
+.player_name{
+  left: 10px;
+}
+
+.player_health_bar, .enemy_health_bar{
+  position: absolute;
+  display: inline-block;
+  height: 12px;
+  width: 250px;
+  top: 35px;
+  border: 2px #06070a solid;
+  border-radius: 4px;
+}
+
+.enemy_health_bar{
+  right: 10px;
+  background: linear-gradient(to left, 
+      #da2525    100%,
+      rgba(0,0,0,0)  0%
+  );
+}
+
+.player_health_bar{
+  left: 10px;
+  background: linear-gradient(to right, 
+      #da2525    100%,
+      rgba(0,0,0,0)  0%
+  );
 }
 
 .battle_canvas{
+  display: block;
   opacity: 0;
   width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
+.start_btn{
+  position: absolute;
+  /* display: flex;
+  justify-content: center;
+  text-align: center; */ 
+  top: 10%;
+  left: 47%;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 32px;
+  font-family: 'ZCOOL KuaiLe', cursive;
+  color: #d1f023;
+  animation-duration: 1s;
+  animation-name: start_game;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+.start_btn:hover{
+  cursor: pointer;
+}
+
+.task_menu{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  top: 30%;
+  color: transparent;
+}
+
+.task_menu button{
+  min-width: 120px;
+  background-color: #0e0808;
+  font-family: 'ZCOOL KuaiLe', cursive;
+  font-size: 1.2em;
+  color: #d1f023;
+  border: 2px solid #0e0808;
+  padding: 10px 5px;
+  margin: 10px 5px;
+  outline: none;
+}
+
+.task_menu button:hover{
+  border: 2px solid #36c423;
+}
+
+.math_form{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  height: 20%;
+  left: 43%;
+  top: 30%;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(94, 238, 27, 0.541);
+  background-color: #130b0b;
+}
+
+.math_solve {
+  width: 30%;
+  margin: 8% 0;
+  font-family: 'ZCOOL KuaiLe', cursive;
+  text-align: center;
+  text-transform: uppercase;
+  outline: none;
+  background-color: transparent;
+  color: #36c423;
+  font-weight: 800;
+  font-size: 20px;
+  border: none;
+}
+
+.math_solve::placeholder{
+  color: #36c423;
+}
+
+.math_solve:focus::placeholder{
+  color: transparent;
+}
+
+.math_submit{
+  font-size: 20px;
+  text-transform: uppercase;
+  background-color: #130b0b;
+  height: 15%;
+  font-family: 'ZCOOL KuaiLe', cursive;
+  color: #36c423;
+  border: none;
+  outline: none;
+}
+
+.math_task{
+  font-family: 'ZCOOL KuaiLe', cursive;
+  color: #36c423;
+  font-size: 1.2em;
+}
+
+.math_submit:hover{
+  text-shadow: 3px 3px 4px black, 0 0 2em #d1f023;
+  /* box-shadow: 0 0 10px rgba(236, 222, 20, 0.541); */
+} 
+
+
+@keyframes start_game {
+  from { text-shadow: 0 0 0px rgb(72, 245, 29); }
+  to { text-shadow: 0 0 20px rgb(72, 245, 29); }
+}
 
 @keyframes blinker{
   80%{
