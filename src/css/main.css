@@ -277,12 +277,15 @@ li, a{
 }
 
 .start_btn{
-  position: absolute;
+  position: fixed;
   /* display: flex;
   justify-content: center;
   text-align: center; */ 
   top: 10%;
-  left: 47%;
+  /* left: 47%; */
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-transform: uppercase;
   font-weight: 800;
   font-size: 32px;
@@ -326,36 +329,49 @@ li, a{
 }
 
 .math_form{
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 15%;
-  height: 20%;
-  left: 43%;
+  width: 25vh;
+  height: 20vh;
+  min-width: 100px;
+  min-height: 100px;
+  
+  /*
   top: 30%;
+  margin: auto; */
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(94, 238, 27, 0.541);
+  box-shadow: 0 0 10px rgba(238, 224, 27, 0.541);
+  /* box-shadow: 0 0 10px rgba(94, 238, 27, 0.541); */
   background-color: #130b0b;
 }
 
 .math_solve {
-  width: 30%;
+  width: 70%;
   margin: 8% 0;
   font-family: 'ZCOOL KuaiLe', cursive;
   text-align: center;
   text-transform: uppercase;
   outline: none;
   background-color: transparent;
-  color: #36c423;
+  color: #d6da20;
+  /* color: #36c423; */
   font-weight: 800;
   font-size: 20px;
   border: none;
 }
 
 .math_solve::placeholder{
-  color: #36c423;
+  /* color: #36c423; */
+  color: #d6da20;
 }
 
 .math_solve:focus::placeholder{
@@ -368,14 +384,16 @@ li, a{
   background-color: #130b0b;
   height: 15%;
   font-family: 'ZCOOL KuaiLe', cursive;
-  color: #36c423;
+  /* color: #36c423; */
+  color: #d6da20;
   border: none;
   outline: none;
 }
 
 .math_task{
   font-family: 'ZCOOL KuaiLe', cursive;
-  color: #36c423;
+  /* color: #36c423; */
+  color: #d6da20;
   font-size: 1.2em;
 }
 
