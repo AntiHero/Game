@@ -271,9 +271,74 @@ li, a{
 .battle_canvas{
   display: block;
   opacity: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
+  color: transparent;
+}
+
+.square{
+  position: absolute;
+  width: 30vh;
+  height: 30vh;
+  top: -40vh;
+  left: 8%;
+
+  /* position: absolute;
+  top: -27vh;
+  left: 10%;
+  background-color: #e25cd0;
+  height: 27vh;
+  width: 26vh;
+  box-shadow: -5px -5px 10px #321d35; */
+
+}
+
+
+.square_side_1{
+  width:102%;
+  height: 99%;
+  background:#dd59cb;
+  border:solid 2px #dd59cb;
+  float:left;
+  position: absolute;
+}
+
+.square_side_2{
+  width:3%;
+  height:99%;
+  background:#be47af;
+  border:solid 2px #be47af;
+  transform: translate(31vh, -3%) skew(180deg,133deg);
+  position: absolute;
+ 
+}
+
+.square_side_3{
+  width:102%;
+  height:1vh;
+  background:#be47af;
+  border:solid 2px #be47af;
+  float:left;
+  transform: rotate(0deg) translate(2%, -100%) skew(138deg, 0deg);
+  position: absolute;
+}
+
+.square_rage{
+  position: absolute;
+  /* width: 9vh;
+  height: 5vh; */
+  top: 69vh;
+  right: 44vh;
+  opacity: 0;
+}
+
+.skittle{
+  position: absolute;
+  width: 17vh;
+  height: 15vh;
+  top: 48vh;
+  left: 35vh;
 }
 
 .start_btn{

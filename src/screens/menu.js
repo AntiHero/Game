@@ -2,6 +2,8 @@ import $ from 'jquery';
 import {battle} from './battle';
 import {playerName} from './nickname';
 
+export const mode = {value: 'easy'};
+
 export default function menu() {
   $('.nickname').remove();
   let menu = `<div class="menu">
@@ -11,9 +13,9 @@ export default function menu() {
       <li class="menu_item mode" id="mode">
         <a href="#mode" class="menu_btn">Mode</a>
         <div class="menu_small mode">
-          <a href="#">Chicken</a>
-          <a href="#">Schoolboy</a>
-          <a href="#">Overmind</a>
+          <a href="#" class="menu_easy">Chicken</a>
+          <a href="#" class="menu_medium">Schoolboy</a>
+          <a href="#" class="menu_hard">Overmind</a>
         </div>
       </li>
       <li class="menu_item map" id="map">
@@ -36,6 +38,7 @@ export default function menu() {
     battle();
   });
 
+  
   let mapClk = false;
   let modeClk = false;
 
@@ -60,5 +63,21 @@ export default function menu() {
       modeClk = false;
     }
   });
+
+  selectMode();
 }
 
+function selectMode() {
+  $('.menu_small.mode').bind('click', function(event) {
+    if ($(event.target).hasClass('menu_easy')) {
+      mode.value = 'easy';
+      console.log(mode.value);
+    } else if ($(event.target).hasClass('menu_medium')){
+      mode.value = 'medium';
+      console.log(mode.value);
+    } else if ($(event.target).hasClass('menu_hard')) {
+      mode.value = 'hard';
+      console.log(mode.value);
+    }
+  })
+}

@@ -1,11 +1,26 @@
 import $ from 'jquery';
 import {task} from '../../../src/screens/task';
+import {context} from '../../../src/screens/battle';
+
+
+import {enemy} from '../../../src/screens/battle';
+import {mode} from '../../../src/screens/menu';
+import {mainHero} from '../../../src/screens/battle';
+import {attack} from '../../../src/characters/animation';
+import {damaged} from '../../../src/characters/animation';
+import {squareFightInit} from '../../../src/screens/battle';
+
 let result = {value: 0};
 
 export function math() {
   $('.start_btn').unbind();
 
-  let mathTask = makeEasy();
+  let mathTask = 0;
+
+  if (mode.value === 'easy') {
+    mathTask = makeEasy();
+  }
+  
 
   // if ($('.math_form').length) {
   //   $('.math_form').show();
@@ -43,21 +58,31 @@ function decision(mathTask) {
     
     setTimeout(function() {
       $('.math_form').remove();
+      // $('.start_btn').bind('click', task);
     }, 1500);
+    console.log(mainHero.val.name);
+    console.log(enemy.val.name);
+
+    attack(mainHero.val.name, context.val);
+    damaged(enemy.val.name, context.val);
+
     console.log('right')
   } else {
     $('.math_task, .math_submit, .math_solve ').css('color', '#da2525');
     $('.math_form').css('box-shadow', '0 0 10px #da2525');
-    $('.math_solve').val('right');
+    $('.math_solve').val('wrong');
     $('.math_submit').remove();
 
     setTimeout(function() {
       $('.math_form').remove();
+      // $('.start_btn').bind('click', task);
     }, 1500);
     console.log('wrong');
+    attack(enemy.val.name, context.val);
+    //damaged(mainHero.val.name, context.val);
   }
   
-  $('.start_btn').bind('click', task);
+  
 }
 
 function makeEasy() {
