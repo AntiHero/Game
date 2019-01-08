@@ -8,7 +8,15 @@ import {square} from '../characters/char-parts'
 import {eye} from '../characters/char-parts';
 import {shark} from '../characters/char-parts';
 import {hero} from '../characters/char-parts';
+import {mainHero} from '../screens/battle'
+import {enemy} from '../screens/battle'
+import {wasted} from '../screens/wasted';
 import {mode} from '../screens/menu';
+import win from '../screens/win';
+
+
+export const score = {value: 0};
+
 
 let requestAnimationFrame = window.requestAnimationFrame ||
                             window.mozRequestAnimationFrame ||
@@ -55,14 +63,22 @@ function squareAttack() {
     let opacity0 = 0.0;
     let opacity1 = 1.0;
     let deltaUp = 0.02;
-    let deltaDown = -0.1;
+    let deltaDown = -0.01;
 
     let cvx = context.val;
 
     function fallRect() {
         if (x >= $(window).height()*0.61) {
             removeRect(1000).then(function(){
-                $('.start_btn').bind('click', task);
+                console.log(enemy.val.damage, 'cube');
+                $('.player_health_bar').css('background', 'linear-gradient(to right, ' + 'red ' + `${mainHero.val.health -= enemy.val.damage}` + '%,'  + 'transparent ' + `0` + '%)');
+                if (mainHero.val.health <= 0) {
+                    $('.start_btn').unbind('click', task);
+                    wasted();
+                } else {
+                    $('.start_btn').bind('click', task);
+                }
+                //$('.start_btn').bind('click', task);
         });
             return 0;
         }
@@ -74,199 +90,218 @@ function squareAttack() {
     }
     
 
-    function rageRect() {
+    // function rageRect() {
 
-        opacity += delta;
+    //     opacity += delta;
 
-        if (opacity < 0.0) {
-            console.log(opacity +'delta 0.01')
-            // let glasses = new Image();
-            // glasses.src = square.accessory;
-
-            // glasses.onload = function(){
-            // cvx.drawImage(glasses, 1405, 645);   
-            // }
-            return 0;
-        }
+    //     if (opacity < 0.0) {
+    //         return 0;
+    //     }
 
 
-        if (opacity >= 1.0) {
-            delta = -0.01;
-            console.log(opacity +'delta -0.01')
-            // let glasses = new Image();
-            // glasses.src = square.accessory;
+    //     if (opacity >= 1.0) {
+    //         delta = -0.01;
+    //     }
 
-            // glasses.onload = function(){
-            // cvx.drawImage(glasses, 1405, 645);   
-            // }
-        }
-        // if(opacity < 0) {
-        //    
-        // } else {
-        //     if (opacity >= 0.99) {
-        //         let glasses = new Image();
-        //         glasses.src = square.accessory;
+    //     cvx.globalAlpha = opacity;
 
-        //         glasses.onload = function(){
-        //         cvx.drawImage(glasses, 1405, 645);   
-        //         }
+    //     let rage = new Image();
+    //     rage.src = '../../images/characters/square/square-rage.png';
 
-        //         delta = -0.01
-        //     }
-            
-        // }
+    //     rage.onload = function(){
+    //     cvx.drawImage(rage, 1404, 643);   
+    //     }
 
-        // let rage = new Image();
-        // rage.src = '../../images/characters/square/square-rage.png';
-        
-        // rage.onload = function(){
-        //     cvx.drawImage(rage, 1420, 650);   
-        // }
-        cvx.globalAlpha = opacity;
+    //     requestAnimationFrame(rageRect);
+    // }
+ 
+    let yellowCube = new Image();
+    yellowCube.src = '../../images/characters/square/yellow-cube.png';
 
-    
-        let rage = new Image();
-        rage.src = '../../images/characters/square/square-rage.png';
+    let greenCube = new Image();
+    greenCube.src = '../../images/characters/square/green-cube.png';
 
-        rage.onload = function(){
-        cvx.drawImage(rage, 1425, 645);   
-        }
-        
-        // cvx.beginPath();
-        // cvx.moveTo(1426, 653);
-        // cvx.lineTo(1422, 668);
-        // cvx.lineTo(1428, 663);
-        // cvx.lineTo(1424, 686);
-        // cvx.lineWidth = 3;
-        // cvx.strokeStyle = '#ff0000';
-        // //cvx.closePath();
-        // cvx.stroke();
+    let cyanCube = new Image();
+    cyanCube.src = '../../images/characters/square/cyan-cube.png';
 
-        
-        // cvx.beginPath();
-        // cvx.moveTo(1496, 655);
-        // cvx.lineTo(1492, 675);
-        // cvx.lineTo(1500, 670);
-        // cvx.lineTo(1495, 690);
-        // cvx.lineWidth = 3;
-        // cvx.strokeStyle = '#ff0000';
-        // cvx.stroke();
-        // cvx.beginPath();
-        // cvx.moveTo(120, 650);
-        // cvx.lineTo(1420, 550);
-        // //cvx.lineTo(1410, 550);
-        // cvx.lineWidth = 2;
-        // cvx.fill();
-        // 
-        // cvx.stroke
+    let purpleCube = new Image();
+    purpleCube.src = '../../images/characters/square/purple-cube.png';
 
-        requestAnimationFrame(rageRect);
+    yellowCube.onload = function(){
+        cvx.drawImage(yellowCube, -100, -100);   
     }
-    console.log(context.val.globalAlpha);
-    //$('.square_rage').fadeTo(1000, 1)//.fadeTo(1000,0, fallRect);
-    //rageRect();
-    let rage = new Image();
-    rage.src = '../../images/characters/square/square-rage.png';
-    let glasses = new Image();
-    glasses.src = square.accessory;
 
-    function fadeRectIn() {
-        console.log('in');
-        opacity0 += deltaUp;
-
-
-        cvx.globalAlpha = opacity0;
-        cvx.drawImage(rage, 1420, 648);  
-
-        // cvx.beginPath();
-        // cvx.moveTo(1426, 653);
-        // cvx.lineTo(1422, 668);
-        // cvx.lineTo(1428, 663);
-        // cvx.lineTo(1424, 686);
-        // cvx.lineWidth = 3;
-        // cvx.strokeStyle = '#ff0000';
-        // //cvx.closePath();
-        // cvx.stroke();
-
-        if (opacity0 >= 1.0) {        
-            console.log('out');
-            // let glasses = new Image();
-            // glasses.src = square.accessory;
-
-            // glasses.onload = function () {
-            //     cvx.drawImage(glasses, 1405, 645);  
-            // } 
-            
-            
-            return fadeRectOut();
-        }
-        
-         
-        // rage.onload = function(){
-        
-        // }
-        // cvx.beginPath();
-        // cvx.moveTo(1426, 653);
-        // cvx.lineTo(1422, 668);
-        // cvx.lineTo(1428, 663);
-        // cvx.lineTo(1424, 686);
-        // cvx.lineWidth = 3;
-        // cvx.strokeStyle = '#ff0000';
-        // cvx.stroke();
-        if (opacity0 < 1) {
-            requestAnimationFrame(fadeRectIn);
-        }
-        
+    greenCube.onload = function(){
+        cvx.drawImage(greenCube, -100, -100);   
     }
-    
-    function fadeRectOut() {
-        opacity1 += deltaDown;
-        
-        cvx.globalAlpha = opacity1;
 
-        cvx.drawImage(glasses, 1404, 643); 
-        cvx.drawImage(rage, 1420, 648);   
+    purpleCube.onload = function(){
+        cvx.drawImage(purpleCube, -100, -100);   
+    }
 
-        if (opacity1 <= 0.0) {        
-            let glasses = new Image();
-            glasses.src = square.accessory;
-            cvx.globalAlpha = 1;
-            glasses.onload = function () {
-                cvx.drawImage(glasses, 1404, 643);  
-            }      
-            fitzDmg(cvx);
-            return fallRect();
-        }
-        
-        // rage.onload = function(){
-        
-        // }
-        // cvx.beginPath();
-        // cvx.moveTo(1426, 653);
-        // cvx.lineTo(1422, 668);
-        // cvx.lineTo(1428, 663);
-        // cvx.lineTo(1424, 686);
-        // cvx.lineWidth = 3;
-        // cvx.strokeStyle = '#ff0000';
-        // cvx.stroke();
-        if (opacity1 >= 0.0) {
-            requestAnimationFrame(fadeRectOut);
-        }
-        
+    cyanCube.onload = function(){
+        cvx.drawImage(cyanCube, -100, -100);   
     }
 
     // let rage = new Image();
     // rage.src = '../../images/characters/square/square-rage.png';
-    // rage.onload = function(){
-    // cvx.drawImage(rage, 1420, 647);  
-    // } 
-    //fadeRectIn();
+    // let glasses = new Image();
+    // glasses.src = square.accessory;
+    let yCubeY = 820;//500;
+    let gCubeY = 810//560;
+    let pCubeY = 780//560;
+    let cCubeY = 800;//620;
+
+    let yCubeX = 1400;//1400;
+    let gCubeX = 1280//1340;
+    let pCubeX = 1320//1460;
+    let cCubeX = 1350;//1400;
+
+    let cubesAcc = 0.8;
+    let flag = false;
+
+    function fadeRectIn() {
+        opacity0 += deltaUp;
+
+        cvx.globalAlpha = 1;
+        cvx.drawImage(images.background, 0, 0);
+        cvx.drawImage(images.heroHead, 260, 551); 
+        cvx.drawImage(images.heroBody, 150, 550); 
+        cvx.drawImage(images.squareBody, 1400, 600);  
+
+
+        // yCubeX += 0.5; 
+        // gCubeX += 0.5; 
+        // pCubeX += 0.5 
+        // cCubeX += 0.5; 
+
+        if (yCubeY >= 700 && flag === false) {
+            yCubeY -= 1.2; 
+            gCubeY -= 1.5; 
+            pCubeY -= 1.3; 
+            cCubeY -= 1.7; 
+        } else {
+            flag = true;
+            yCubeY += 0.1 + cubesAcc;
+            gCubeY += 0.1 + cubesAcc;
+            pCubeY += 0.1 + cubesAcc;
+            cCubeY += 0.1 + cubesAcc;
+            cubesAcc += 2.3;
+        }
+
+        
+
+        cvx.globalAlpha = opacity0;
+        cvx.drawImage(yellowCube, yCubeX, yCubeY);
+        cvx.drawImage(greenCube, gCubeX, gCubeY);  
+        cvx.drawImage(purpleCube, pCubeX, pCubeY);  
+        cvx.drawImage(cyanCube, cCubeX, cCubeY); 
+
+             
+        //cvx.drawImage(rage, 1404, 643);  
+
+        // if (yCubeY >= 560) {
+        //     //fadeRectOut();
+        //     return new Promise (function(resolve, reject) {
+        //         setTimeout(fadeRectOut, 1000);
+        //         resolve('success');
+        //     });
+        // }
+
+        if (cubesAcc >= 40) {
+            cubesAcc = 0.5;
+            //fallRect();
+            return fallingRect();
+        }
+        
+        if (cubesAcc < 40) {
+            
+            requestAnimationFrame(fadeRectIn);
+        }    
+    }
+
+    let bigCube = new Image();
+    bigCube.src = '../../images/characters/square/cube.png';
+
+    bigCube.onload = function(){
+        cvx.drawImage(bigCube, 300, 0);   
+    }
+
+    let bigCubeY = -300;
+
+    function fallingRect() {
+        cvx.drawImage(images.background, 0, 0);
+        
+        
+        if (bigCubeY >20) {
+            cvx.drawImage(images.heroHeadAttacked, 260, 551);
+        } else {
+            cvx.drawImage(images.heroHead, 260, 551);
+        }
+        
+        cvx.drawImage(images.heroBody, 150, 550); 
+        cvx.drawImage(images.squareBody, 1400, 600); 
+        cvx.drawImage(bigCube, 150, bigCubeY); 
+
+        cubesAcc += 0.5;
+        bigCubeY += cubesAcc;
+
+        if (bigCubeY >= 530) {
+            $('.player_health_bar').css('background', 'linear-gradient(to right, ' + 'red ' + `${mainHero.val.health -= enemy.val.damage}` + '%,'  + 'transparent ' + `0` + '%)');
+                if (mainHero.val.health <= 0) {
+                    $('.start_btn').unbind('click', task);
+                    wasted();
+                } else {
+                    $('.start_btn').bind('click', task);
+                }  
+            return new Promise (function(resolve, reject) {
+                setTimeout(fadeRectOut, 800);
+                resolve('success');
+            })
+        } 
+
+        if (bigCubeY < 530) {
+            requestAnimationFrame(fallingRect);
+        }
+
+    }
+    
+    let fadeRectOutFlag = true;
+
+    function fadeRectOut() {
+        opacity1 += deltaDown;
+ 
+        cvx.globalAlpha = 1;
+        cvx.drawImage(images.background, 0, 0); 
+        cvx.drawImage(images.heroHeadAttacked, 260, 551); 
+        cvx.drawImage(images.heroBody, 150, 550); 
+        cvx.drawImage(images.squareBody, 1400, 600); 
+
+        cvx.globalAlpha = opacity1;
+        cvx.drawImage(bigCube, 150, 526); 
+
+
+
+        if (opacity1 <= 0.0) {   
+            cvx.globalAlpha = 1; 
+            cvx.drawImage(images.background, 0, 0); 
+            cvx.drawImage(images.heroHead, 260, 551); 
+            cvx.drawImage(images.heroBody, 150, 550); 
+            cvx.drawImage(images.squareBody, 1400, 600); 
+     
+        }
+        console.log('shit');
+ 
+        if (opacity1 >= 0.0) {
+            if (fadeRectOutFlag) {
+                fadeRectOutFlag = false;
+                
+            }
+            console.log('govno');
+            requestAnimationFrame(fadeRectOut);
+        }
+    }
     fadeRectIn();
-    console.log(cvx.globalAlpha);
-    
-    
-    //fallRect(context, 50, 50);
-    console.log('square attack');
 }
 
 function sharkAttack(context) {
@@ -310,14 +345,21 @@ function sharkAttack(context) {
         }
 
         if (x <= 250) {
-            console.log('hi');
             context.drawImage(images.leshenkoHit, x, y);
             context.setTransform(1,0,0,1,0,0);
               sharkAttackQueue().then(function() {
                 setTimeout(() => {
                     context.drawImage(images.heroHead, 260, 551); 
                     context.drawImage(images.sharkBody, 1300, 600);
-                    $('.start_btn').bind('click', task);
+                    console.log(enemy.val.damage, 'shakr');
+                    $('.player_health_bar').css('background', 'linear-gradient(to right, ' + 'red ' + `${mainHero.val.health -= enemy.val.damage}` + '%,'  + 'transparent ' + `0` + '%)');
+                    if (mainHero.val.health <= 0) {
+                        $('.start_btn').unbind('click', task);
+                        wasted();
+                    } else {
+                        $('.start_btn').bind('click', task);
+                    }
+                   // $('.start_btn').bind('click', task);
                 }, 500); 
                 
             });
@@ -376,23 +418,10 @@ function sharkAttack(context) {
                 context.drawImage(images.heroBody, 150, 550); 
                 context.drawImage(images.sharkBody2, 1300, 600);
 
-                //context.drawImage(images.leshenko, 285, 555); 
                 resolve('success');
             }, 1000);
         });
     }
-    // sharkAttackQueue();
-    // sharkAttackQueue().then(result => console.log(result)).then(function(){
-    //     setTimeout(function() {
-    //         context.drawImage(images.background, 0, 0);        
-    //         context.drawImage(images.heroBody, 150, 550);
-    //         context.drawImage(images.heroHeadAttacked, 260, 551); 
-    //         context.drawImage(images.sharkBody2, 1300, 600); 
-    //         leshFadeOut();
-    //     },1000)
-    // });
-
-
 }
 
 function eyeAttack(context) {
@@ -423,12 +452,11 @@ function eyeAttack(context) {
 
         radius += 0.3;
         if (radius >= 20) {
-            //let opacity = 0.9
             context.drawImage(images.heroHeadAttacked2, 260, 551); 
             gradient.addColorStop(0, colors[colorStart]);
             gradient.addColorStop(1, colors[colorEnd = Math.floor(Math.random()*(colors.length - 1))]);
 
-            context.strokeStyle = colors[colorStart];//gradient;//colors[color];
+            context.strokeStyle = colors[colorStart];
             context.beginPath();
             context.moveTo(1427, 686);
             context.lineTo(330, 686);
@@ -436,37 +464,22 @@ function eyeAttack(context) {
             context.stroke();
 
             context.beginPath();
-            context.fillStyle = colors[colorStart];//colors[colorEnd];
+            context.fillStyle = colors[colorStart];
             context.arc(340, 686, 13, 0, 2*Math.PI, false);
             context.fill();
 
-            // setTimeout(function() {
-            //     context.drawImage(images.background, 0, 0);        
-            //     context.drawImage(images.heroBody, 150, 550);
-            //     context.drawImage(images.heroHeadAttacked, 260, 551); 
-            //     context.drawImage(images.eyeBody, 1400, 550); 
-            // }, 500)
             eyeAttackRedraw(context).then(function() {
-                // setTimeout(function() {
-                //     
-                // }, 300);
                 context.drawImage(images.heroHead, 260, 551);
-                $('.start_btn').bind('click', task);
-            });
-            // eyeAttackRedraw(context).then(function(context) {
-            //     setTimeout(function(){
-            //         
-            //         alert('hello');
-            //     }, 1000);
-            //     //
-            // });
-            // eyeAttackRedraw(context).then(function(context) {
-            //     setTimeout(function () {
-            //         
-            //     }, 1000);
-            // }).catch(error => console.log(error));
-            
-            
+                console.log(enemy.val.damage, 'eye');
+                $('.player_health_bar').css('background', 'linear-gradient(to right, ' + 'red ' + `${mainHero.val.health -= enemy.val.damage}` + '%,'  + 'transparent ' + `0` + '%)');
+                if (mainHero.val.health <= 0) {
+                    $('.start_btn').unbind('click', task);
+                    wasted();
+                } else {
+                    $('.start_btn').bind('click', task);
+                }
+                
+            });           
         }
 
         if (radius < 20) {
@@ -518,14 +531,27 @@ function fitzAttack(context) {
             context.drawImage(images.heroHand, 310, 627);
             if (mode.value === 'easy') {
                 context.drawImage(images.squareBody, 1400, 600); 
+                // score.value += 10;
+                // $('.score').text(`Score: ${score.value}`);
+
             } else if (mode.value === 'medium') {
                 context.drawImage(images.eyeBody, 1400, 550); 
+                // $('.enemy_health_bar').css('background', 'linear-gradient(to left, ' + '#da2525 ' + '50%, ' + 'rgba(0,0,0,0) ' + '50%)');
+                // score.value += 20;
+                // $('.score').text(`Score: ${score.value}`);
+  
             } else if (mode.value === 'hard'){
                 context.drawImage(images.sharkBody, 1300, 600); 
+                // score.value += 50;
+                // $('.score').text(`Score: ${score.value}`);
+   
             } else {
                 context.drawImage(images.squareBody, 1400, 600); 
+                // score.value += 10;
+                // $('.score').text(`Score: ${score.value}`);
+   
             }
-            //context.drawImage(images.squareBody, 1400, 600);   
+
 
             return 0;
         }
@@ -535,57 +561,10 @@ function fitzAttack(context) {
         }    
     }
     
-
-        // let background = new Image();
-        // background.src = '../../images/backgrounds/background-city.png';
-        
-        // background.onload = function () {
-        //     context.drawImage(background, 0, 0);  
-        // }  
-
-        // let heroBody = new Image();
-        // heroBody.src = hero.body;
-
-        // heroBody.onload = function () {
-        //     context.drawImage(heroBody, 150, 550);  
-        // }  
-
-        // let heroHand = new Image();
-        // heroHand.src = '../../images/characters/hero/hero-hand.png';
-
-        // heroHand.onload = function () {
-        //     context.drawImage(heroHand, 150, 550);  
-        // }  
-
-        // let heroHead = new Image();
-        // heroHead.src = '../../images/characters/hero/hero-head-attack.png';
-
-        // heroHead.onload = function () {
-        //     context.drawImage(heroHead, 260, 551);  
-        // }  
-
-        // let skillet = new Image();
-        // skillet.src = '../../images/characters/hero/weapon/skillet.png';
-
-        // skillet.onload = function () {
-        //     context.drawImage(skillet, 300, y);  
-        // }  
-
-        // let squareBody = new Image();
-        // squareBody.src = square.body;
-
-        // squareBody.onload = function () {
-        //     context.drawImage(squareBody, 1400, 600);  
-        // }  
-
-
     let y = 300;
 
 
     function drawSkillet() {
-
-        // addImageProcess(hero.body, 150, 550).catch(error => console.log(error));
-        // addImageProcess('../../images/characters/hero/hero-head-attack.png', 260, 551).catch(error => console.log(error));
         context.drawImage(images.background, 0, 0);  
         context.drawImage(images.heroHeadMad, 260, 551); 
         context.drawImage(images.heroBody, 150, 550);    
@@ -606,16 +585,14 @@ function fitzAttack(context) {
                 if (dropY < 650) {
                     requestAnimationFrame(dropDown);
                 }
-                //context.drawImage(images.sharkEye, 1352, 685); 
+
             }
             dropDown();
-            //context.drawImage(images.sharkEye, 1352, 685); 
+
         } else {
             context.drawImage(images.squareBody, 1400, 600); 
         }
-        //context.drawImage(images.squareBody, 1400, 600); 
-        //context.drawImage(images.squareMouth, 1450, 717);    
-        
+ 
         y += 5;
 
         if (y >= 570) {
@@ -624,27 +601,49 @@ function fitzAttack(context) {
                     context.drawImage(images.heroHead, 260, 551); 
                     if (mode.value === 'easy') {
                         context.drawImage(images.squareBody, 1400, 600); 
+                        context.drawImage(images.squareBody, 1400, 600); 
+                        $('.enemy_health_bar').css('background', 'linear-gradient(to left, ' + 'red ' + `${enemy.val.health -= mainHero.val.damage}` + '%,'  + 'transparent ' + `0` + '%)');
+                        score.value += 10;
+                        $('.score').text(`Score: ${score.value}`);
+
+                        if (enemy.val.health <= 0) {
+                            win();
+                        }
                     } else if (mode.value === 'medium') {
                         context.drawImage(images.eyeBody, 1400, 550); 
+                        $('.enemy_health_bar').css('background', 'linear-gradient(to left, ' + 'red ' + `${enemy.val.health -= mainHero.val.damage}` + '%,'  + 'transparent ' + `0` + '%)');
+                        score.value += 20;
+                        $('.score').text(`Score: ${score.value}`);
+                        if (enemy.val.health <= 0) {
+                            win();
+                        }
                     } else if (mode.value === 'hard'){
-                        context.drawImage(images.sharkBody, 1300, 600); 
-                        //context.drawImage(images.drop, 1340, 630); 
-                        //context.drawImage(images.sharkEye, 1352, 685); 
+                        context.drawImage(images.sharkBody, 1300, 600);
+                        $('.enemy_health_bar').css('background', 'linear-gradient(to left, ' + 'red ' + `${enemy.val.health -= mainHero.val.damage}` + '%,'  + 'transparent ' + `0` + '%)'); 
+                        score.value += 50;
+                        $('.score').text(`Score: ${score.value}`);
+                        if (enemy.val.health <= 0) {
+                            win();
+                        }
                     } else {
                         context.drawImage(images.squareBody, 1400, 600); 
+                        $('.enemy_health_bar').css('background', 'linear-gradient(to left, ' + 'red ' + `${enemy.val.health -= mainHero.val.damage}` + '%,'  + 'transparent ' + `0` + '%)');
+                        score.value += 10;
+                        $('.score').text(`Score: ${score.value}`);
+                        if (enemy.val.health <= 0) {
+                            win();
+                        }
                     }
                    
                     skilletFadeOut();
-                    $('.start_btn').bind('click', task);
+                   $('.start_btn').bind('click', task);
                 }, 700);
             });
         }
 
         if (y < 570) {
             requestAnimationFrame(drawSkillet);
-        }
-
-        
+        } 
     }
 
     drawSkillet();
@@ -677,12 +676,12 @@ function eyeDmg(context) {
 }
 
 function fitzDmg(context) {
-    let fitzDmg = new Image();
-    fitzDmg.src = '../../images/characters/hero/hero-head-attacked.png';
+    // let fitzDmg = new Image();
+    // fitzDmg.src = '../../images/characters/hero/hero-head-attacked.png';
 
-    fitzDmg.onload = function () {
-        context.drawImage(fitzDmg, 260, 551);  
-    }     
+    // fitzDmg.onload = function () {
+    //     context.drawImage(fitzDmg, 260, 551);  
+    // }     
     //context.drawImage(hero.heroHeadAttacked, 260, 551);
 }
 

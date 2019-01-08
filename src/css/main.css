@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Creepster');
 @import url('https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline');
+@import url('https://fonts.googleapis.com/css?family=Nosifer');
 
 html, body {
   margin: 0;
@@ -15,8 +17,8 @@ li, a{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   top: 0;
   left: 0;
   background-color: #0f0a0a;
@@ -24,10 +26,13 @@ li, a{
 
 .intro_header {
   position: absolute;
-  top: 40%;
-  font-size: 84px;
+  top: 15%;
+  font-size: 22vh;
   color: #da2525;
   text-transform: uppercase;
+  font-family: 'Nosifer', cursive;
+  /* font-family: 'Eater', cursive;
+  font-family: 'ZCOOL KuaiLe', cursive; */
 }
 
 .intro_key {
@@ -40,6 +45,8 @@ li, a{
 
 .nickname{
   position: absolute;
+  display: flex;
+  justify-content: center;
   width: 100%;
   height: 100%;
   opacity: 0;
@@ -56,7 +63,7 @@ li, a{
   display: flex;
   flex-flow: column wrap;
   align-items: center;
-  margin: 0 45%;
+  /* margin: 0 45%; */
   top: 40%;
   font-size: 34px;
   color: #da2525;
@@ -255,18 +262,23 @@ li, a{
 .enemy_health_bar{
   right: 10px;
   background: linear-gradient(to left, 
-      #da2525    100%,
-      rgba(0,0,0,0)  0%
+      red   100%,
+      transparent  0%
   );
 }
 
 .player_health_bar{
   left: 10px;
   background: linear-gradient(to right, 
-      #da2525    100%,
-      rgba(0,0,0,0)  0%
+      red   100%,
+      black    0%
   );
 }
+
+
+/* #da2525    100%,
+      #3d3636fa    0% */
+
 
 .battle_canvas{
   display: block;
@@ -311,7 +323,6 @@ li, a{
   border:solid 2px #be47af;
   transform: translate(31vh, -3%) skew(180deg,133deg);
   position: absolute;
- 
 }
 
 .square_side_3{
@@ -393,7 +404,7 @@ li, a{
   border: 2px solid #36c423;
 }
 
-.math_form{
+.math_form, .eng_form, .capitals_form{
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -414,17 +425,29 @@ li, a{
   /* -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); */
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(238, 224, 27, 0.541);
+  
   /* box-shadow: 0 0 10px rgba(94, 238, 27, 0.541); */
   background-color: #130b0b;
 }
 
-.math_solve {
+.math_form {
+  box-shadow: 0 0 10px rgba(238, 224, 27, 0.541);
+}
+
+.eng_form {
+  box-shadow: 0 0 10px rgba(236, 128, 27, 0.541);
+}
+
+.capitals_form {
+  box-shadow: 0 0 10px rgba(231, 27, 238, 0.541);
+}
+
+.math_solve, .eng_solve, .capitals_solve {
   width: 70%;
   margin: 8% 0;
   font-family: 'ZCOOL KuaiLe', cursive;
   text-align: center;
-  text-transform: uppercase;
+  
   outline: none;
   background-color: transparent;
   color: #d6da20;
@@ -434,7 +457,26 @@ li, a{
   border: none;
 }
 
+.math_solve{
+  text-transform: uppercase;
+}
+
+.eng_solve {
+  text-transform: lowercase;
+}
+
+
 .math_solve::placeholder{
+  /* color: #36c423; */
+  color: #d6da20;
+}
+
+.eng_solve::placeholder{
+  /* color: #36c423; */
+  color: #d6da20;
+}
+
+.capitals_solve::placeholder{
   /* color: #36c423; */
   color: #d6da20;
 }
@@ -443,7 +485,16 @@ li, a{
   color: transparent;
 }
 
-.math_submit{
+.eng_solve:focus::placeholder{
+  color: transparent;
+}
+
+.capitals_solve:focus::placeholder{
+  color: transparent;
+}
+
+
+.math_submit, .eng_submit, .capitals_submit{
   font-size: 20px;
   text-transform: uppercase;
   background-color: #130b0b;
@@ -455,17 +506,109 @@ li, a{
   outline: none;
 }
 
-.math_task{
+
+.math_task, .eng_task, .capitals_task{
   font-family: 'ZCOOL KuaiLe', cursive;
   /* color: #36c423; */
   color: #d6da20;
   font-size: 1.2em;
 }
 
+
 .math_submit:hover{
   text-shadow: 3px 3px 4px black, 0 0 2em #d1f023;
   /* box-shadow: 0 0 10px rgba(236, 222, 20, 0.541); */
 } 
+
+.eng_submit:hover{
+  text-shadow: 3px 3px 4px black, 0 0 2em #3cf723;
+  /* box-shadow: 0 0 10px rgba(236, 222, 20, 0.541); */
+} 
+
+.capitals_submit:hover{
+  text-shadow: 3px 3px 4px black, 0 0 2em #f023e6;
+  /* box-shadow: 0 0 10px rgba(236, 222, 20, 0.541); */
+} 
+
+.score{
+  display:flex;
+  justify-content: end;
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  right: 50px;
+  min-width:100px;
+  min-height:50px;
+  color: #d6da20;
+  font-size: 20px;
+  font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.wasted{
+  position: absolute;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  /* padding-top: 15vh; */
+  /* padding-top: 10%; */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  font-size: 20vh;
+  color: #ee3150;
+  background-color: #352833;
+  font-family: 'Bungee Inline', cursive;
+  opacity: 0;
+}
+
+.wasted span{
+ position: absolute;
+ top: 10vh;
+}
+
+.wasted_score {
+  position: absolute;
+  top: 50vh;
+  width: 100vw;
+  height: 20vh;
+  color: #ee3150;
+  font-family: 'ZCOOL KuaiLe', cursive;
+  font-size: 5vh;
+  text-align: center;
+  opacity: 0;
+}
+
+.continue{
+  position: absolute;
+  text-align: center;
+  color: #ee3150;
+  font-size: 3vh;
+  bottom: 3vh;
+  width: 100vw;
+  font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.win_msg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  opacity: 0;
+}
+
+.win_msg .text{
+  color: #36c423;
+  opacity: 1;
+  font-family: 'ZCOOL KuaiLe', cursive;
+  font-size: 15vh;
+}
+
 
 
 @keyframes start_game {

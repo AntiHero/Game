@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {task} from '../../../src/screens/task';
+//import {task} from '../../../src/screens/task';
 import {context} from '../../../src/screens/battle';
 
 
@@ -8,7 +8,7 @@ import {mode} from '../../../src/screens/menu';
 import {mainHero} from '../../../src/screens/battle';
 import {attack} from '../../../src/characters/animation';
 import {damaged} from '../../../src/characters/animation';
-import {squareFightInit} from '../../../src/screens/battle';
+//import {squareFightInit} from '../../../src/screens/battle';
 
 let result = {value: 0};
 
@@ -18,6 +18,13 @@ export function math() {
   let mathTask = 0;
 
   if (mode.value === 'easy') {
+    mathTask = makeEasy();
+  } else if (mode.value === 'medium') {
+    mathTask = makeMedium();
+  } else if (mode.value === 'hard') {
+    mathTask = makeHard();
+  }
+  else {
     mathTask = makeEasy();
   }
   
@@ -99,10 +106,30 @@ function makeEasy() {
   return task;
 }
 
-function medium() {
-  
+function makeMedium() {
+  const mediumMin = 5;
+  const mediumMax = 15;
+  const operations = ['+', '-', '*'];
+
+  const operand1 = Math.floor(Math.random()*(mediumMin + mediumMax) + mediumMin);
+  const operand2 = Math.floor(Math.random()*(mediumMin + mediumMax) + mediumMin);
+  const sign  = operations[Math.floor(Math.random()*(operations.length))];
+
+  const firstLvl = operand1 + ' ' + sign + ' ' + operand2;
+  const task = firstLvl;
+  return task;
 }
 
-function hard() {
-  
+function makeHard() {
+  const hardMin = 5000;
+  const hardMax = 10000;
+  const operations = ['+', '-', '*'];
+
+  const operand1 = Math.floor(Math.random()*(hardMin + hardMax) + hardMin);
+  const operand2 = Math.floor(Math.random()*(hardMin + hardMax) + hardMin);
+  const sign  = operations[Math.floor(Math.random()*(operations.length))];
+
+  const firstLvl = operand1 + ' ' + sign + ' ' + operand2;
+  const task = firstLvl;
+  return task;
 }

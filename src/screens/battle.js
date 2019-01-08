@@ -7,6 +7,7 @@ import {square} from '../characters/char-parts';
 import {eye} from '../characters/char-parts';
 import {shark} from '../characters/char-parts';
 import {hero} from '../characters/char-parts';
+import {score} from '../characters/animation'
 
 
 export const context = {val:''};
@@ -25,7 +26,21 @@ let requestAnimationFrame = window.requestAnimationFrame ||
 let count = 2;
 let cvx;
 
+let i_0 = 0;
+let i_1 = 0;
+let i_2 = 0;
+
 export function battle() {
+    i_0 = 0;
+    i_1 = 0;
+    i_2 = 0;
+
+    
+
+    // $('.menu_item.mode').off('click');
+    // $('.menu_item.map').off('click');
+    // $('.menu_small.mode').unbind('click');
+    // $('.game').unbind('click');
     $('.menu').remove();
     //$('body').css('background-image', 'url(../../images/backgrounds/background-city.png)');
         
@@ -37,20 +52,68 @@ export function battle() {
     
     cvx = cvs.getContext('2d');
     context.val = cvx;
+    cvx.clearRect(0, 0, cvs.width, cvs.height);
     console.log(mode.value);
-    for (let i = 0; i < 2; i++) {
-        initDetails(cvx);
-        initFight(cvx);
-        initHero(cvx);
-    }
-    
 
-    if (mode.value == 'easy') {
-        // console.log(mode.value + 'ez');
-        // initFitzAttack(context.val);
-        //wrapper().then(initFight).then(initHero).catch(error => console.log(error));
-      } 
+    // BACKGROUND
+    cvx.globalAlpha = 0.2;
+    let background = new Image();
+
+    background.onload = function(){
+    cvx.drawImage(background,0,0);   
+    }
+    background.src = '../../images/backgrounds/background-city.png';
     
+    images.background = background;
+
+    cvx.globalAlpha = 0.5;
+    background.onload = function(){
+    cvx.drawImage(background,0,0);   
+    }
+
+    cvx.globalAlpha = 1;
+    
+    //    initDetails(cvx);
+    //    initFight(cvx);
+    //    initHero(cvx);
+       
+    cvx.globalAlpha = 0.5;
+    let initDtlsInt = setInterval(function() {
+        i_0++;
+        
+        if (i_0 == 2) {
+            clearInterval(initDtlsInt);
+        }
+        initDetails(cvx);
+        cvx.globalAlpha = 1.0;
+    }, 60);  
+
+
+    cvx.globalAlpha = 0.5;
+    let initFightInt = setInterval(function() {
+        
+        console.log('petuh')
+        i_1++;
+        if (i_1 == 2) {
+            clearInterval(initFightInt);
+        }
+        initFight(cvx);
+        cvx.globalAlpha = 1.0;
+    }, 60);   
+    
+    cvx.globalAlpha = 0.5;
+    let initHeroInt = setInterval(function() {
+        i_2++
+        if (i_2 == 2) {
+            clearInterval(initHeroInt);
+        }
+        initHero(cvx);
+        cvx.globalAlpha = 1.0;
+    }, 60);  
+
+
+    cvx.globalAlpha = 1.0;
+ 
     //init(cvx);
     //drawBackground(cvx);
 
@@ -71,7 +134,7 @@ export function battle() {
     // }
     setChars();
     drawSquare();
-    $('.battle_canvas').fadeTo(2900,1,startBattle());
+    $('.battle_canvas').fadeTo(3500,1,startBattle());
     //drawSkillet();
 
     
@@ -90,11 +153,13 @@ function setPlayersAttr() {
     let battle = `
     <canvas class="battle_canvas"></canvas>
     `;
+    let scoretab = `<div class="score">Score: ${score.value}</div>`
     $('body').prepend(startBtn);
     $('body').prepend(mainName);
     $('body').prepend(enemyName);
     $('body').prepend(playerHealthBar);
     $('body').prepend(enemyHealthBar);
+    $('body').prepend(scoretab);
     $('body').prepend(battle);
     $('.player_name').prepend(playerName.name);
 }
@@ -114,25 +179,17 @@ function setChars() {
         enemy.val = new Char('Eye', 100, 20, eye);
 
     } else {
-        enemy.val = new Char('Shark', 100, 50, shark);
-
+        enemy.val = new Char('Shark', 100, 40, shark);
     }
 
     mainHero.val = new Char('Fitz', 100, 10, hero);
+
     //addImageProcess(hero.body, 150, 550).catch(error => console.log(error));
     //addImageProcess(hero.head, 260, 551).catch(error => console.log(error));
     //drawChar(hero.body, 150, 550);
 }
 
-// export async function drawChar(char, x, y) {
-//     let charImg = new Image();
-//     charImg.src = char;
-//     console.log(char);
 
-//     charImg.onload = await function(){
-//     cvx.drawImage(charImg, x, y);   
-//     }
-// }
 
 export function addImageProcess(char, x, y){
     return new Promise((resolve, reject) => {
@@ -153,26 +210,8 @@ function drawSquare() {
     $('body').append(square);
 }
 
-// function drawSkillet() {
-//     let skillet= `<img class="skittle" src='../../images/characters/hero/weapon/skillet.png'></img>`;
-//     $('body').append(skillet);
-
-// }
-
-// function drawBackground(cvx) {
-   
-    
-// }
 
 function initFight(context) {
-    // BACKGROUND
-    let background = new Image();
-    background.src = '../../images/backgrounds/background-city.png';
-
-    background.onload = function(){
-        cvx.drawImage(background,0,0);   
-    }
-    images.background = background;
 
     if (mode.value === 'easy') {
         //SQUARE
@@ -181,8 +220,13 @@ function initFight(context) {
 
         images.squareBody = squareBody;
 
+
         squareBody.onload = function () {
-        context.drawImage(squareBody, 1400, 600);  
+        context.drawImage(squareBody, 1400, 600); 
+        }  
+
+        squareBody.onload = function () {
+        context.drawImage(squareBody, 1400, 600); 
         }  
 
         //SQUARE MOUTH ATTACKED
@@ -199,13 +243,18 @@ function initFight(context) {
     if (mode.value === 'medium') {
         //EYE
         let eyeBody = new Image();
-        eyeBody.src = eye.body;
-
-        images.eyeBody = eyeBody;
 
         eyeBody.onload = function () {
-        context.drawImage(eyeBody, 1400, 550);  
-        }  
+        context.drawImage(eyeBody, 1400, 550); 
+        }
+       
+        eyeBody.src = eye.body;
+
+        eyeBody.onload = function () {
+        context.drawImage(eyeBody, 1400, 550); 
+        }
+
+        images.eyeBody = eyeBody;
 
         //EYE MOUTH ATTACKED
         let eyeMouth = new Image();
@@ -230,19 +279,13 @@ function initFight(context) {
     
     if (mode.value === 'hard') {
 
-        //SHARK BODY2
-        let sharkBody2 = new Image();
-        sharkBody2.src = shark.body2;
-
-        images.sharkBody2 = sharkBody2;
-
-        sharkBody2.onload = function () {
-        context.drawImage(sharkBody, -500, -500);  
-        } 
-
         //SHARK BODY
         let sharkBody = new Image();
         sharkBody.src = shark.body;
+
+        sharkBody.onload = function () {
+        context.drawImage(sharkBody, 1300, 600);  
+        }  
 
         images.sharkBody = sharkBody;
 
@@ -291,7 +334,8 @@ function initFight(context) {
          context.drawImage(leshenkoHit, -200, -200);  
          } 
     }
-
+    
+    console.log(i_2);
 }
    
 
@@ -299,23 +343,26 @@ function initHero(context) {
     // FITZ BODY
     let heroBody = new Image();
     heroBody.src = hero.body;
-
-    images.heroBody = heroBody;
-
     heroBody.onload = function () {
         context.drawImage(heroBody, 150, 550);  
     }  
 
 
+    images.heroBody = heroBody;
+
+    
+
     // FITZ HEAD
     let heroHead = new Image();
     heroHead.src = hero.head;//'../../images/characters/hero/hero-head.png';
 
-    images.heroHead = heroHead;
-
     heroHead.onload = function () {
         context.drawImage(heroHead, 260, 551);  
     } 
+
+    images.heroHead = heroHead;
+
+   
     //context.drawImage(images.heroHead, 260, 551); 
     //context.drawImage(images.heroBody, 150, 550);  
 
@@ -324,10 +371,11 @@ function initHero(context) {
     // if (count > 0) {
     //     requestAnimationFrame(initHero);
     // }
+    console.log(i_0);
 }
 
 
-export function initDetails(context) {
+function initDetails(context) {
     // FITZ HAND
     let heroHand = new Image();
     heroHand.src = '../../images/characters/hero/hero-hand.png';
@@ -335,7 +383,7 @@ export function initDetails(context) {
     images.heroHand = heroHand;
 
     heroHand.onload = function () {
-        context.drawImage(heroHand, -100, -100);  
+    context.drawImage(heroHand, -100, -100);  
     }  
 
     // SKILLET'S GUN FIRE
@@ -397,6 +445,18 @@ export function initDetails(context) {
     heroHeadAttacked2.onload = function () {
         context.drawImage(heroHeadAttacked2, -100, -100);  
     } 
+
+    //SHARK BODY2
+    let sharkBody2 = new Image();
+    sharkBody2.onload = function () {
+    context.drawImage(sharkBody2, -500, -500);  
+    }
+
+    sharkBody2.src = shark.body2;
+
+    images.sharkBody2 = sharkBody2;
+
+    console.log(i_1);
 }
 
 function wrapper() {

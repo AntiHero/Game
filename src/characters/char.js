@@ -12,13 +12,13 @@ export class Char{
     this.accessory = images.accessory;
   }
 
-  attack() {
+  // attack() {
 
-  }
+  // }
 
-  damaged() {
-
-  }
+  // damaged() {
+    
+  // }
 
 
 }

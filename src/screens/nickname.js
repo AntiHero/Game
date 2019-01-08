@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import menu from './menu';
+import {menu} from './menu';
 
 export const playerName = {name: ''};
 export function chooseNickName() {
@@ -18,6 +18,7 @@ export function chooseNickName() {
 
   $('.nickname_button').click(function(event){
     event.preventDefault();
+    console.log(playerName.name)
     playerName.name = $('.nickname_input').val();
     if (playerName.name === '') {
       $('[placeholder]').css('font-weight', '200');
