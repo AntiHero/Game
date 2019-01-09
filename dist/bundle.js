@@ -22147,13 +22147,13 @@ function battle() {
   };
 
   if (_menu__WEBPACK_IMPORTED_MODULE_3__["map"].value === "default") {
-    background.src = '../../images/backgrounds/background-city.png';
+    background.src = './images/backgrounds/background-city.png';
   } else if (_menu__WEBPACK_IMPORTED_MODULE_3__["map"].value === "sunny") {
-    background.src = '../../images/backgrounds/background-sunny.png';
+    background.src = './images/backgrounds/background-sunny.png';
   } else if (_menu__WEBPACK_IMPORTED_MODULE_3__["map"].value === "imaguru") {
-    background.src = '../../images/backgrounds/background-imaguru.png';
+    background.src = './images/backgrounds/background-imaguru.png';
   } else {
-    background.src = '../../images/backgrounds/background-city.png';
+    background.src = './images/backgrounds/background-city.png';
   }
 
   images.background = background;

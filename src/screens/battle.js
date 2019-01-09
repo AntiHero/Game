@@ -56,13 +56,13 @@ export function battle() {
     }
 
     if (map.value === "default") {
-        background.src = '../../images/backgrounds/background-city.png';
+        background.src = './images/backgrounds/background-city.png';
     } else if (map.value === "sunny") {
-        background.src = '../../images/backgrounds/background-sunny.png';
+        background.src = './images/backgrounds/background-sunny.png';
     } else if (map.value === "imaguru") {
-        background.src = '../../images/backgrounds/background-imaguru.png';
+        background.src = './images/backgrounds/background-imaguru.png';
     } else {
-        background.src = '../../images/backgrounds/background-city.png';
+        background.src = './images/backgrounds/background-city.png';
     }
     
     
