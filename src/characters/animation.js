@@ -224,7 +224,7 @@ function squareAttack() {
     }
 
     let bigCube = new Image();
-    bigCube.src = '../../images/characters/square/cube.png';
+    bigCube.src = './images/characters/square/cube.png';
 
     bigCube.onload = function(){
         cvx.drawImage(bigCube, 300, 0);   
@@ -727,7 +727,7 @@ function removeRect(delay) {
         setTimeout(function() {
             resolve($('.square').fadeOut(1000, function () {
                 let fitzHead = new Image();
-                fitzHead.src = '../../images/characters/hero/hero-head.png';
+                fitzHead.src = './images/characters/hero/hero-head.png';
 
                 fitzHead.onload = function () {
                 context.val.drawImage(fitzHead, 260, 551);  

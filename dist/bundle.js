@@ -21383,7 +21383,7 @@ function squareAttack() {
   }
 
   var bigCube = new Image();
-  bigCube.src = '../../images/characters/square/cube.png';
+  bigCube.src = './images/characters/square/cube.png';
 
   bigCube.onload = function () {
     cvx.drawImage(bigCube, 300, 0);
@@ -21836,7 +21836,7 @@ function removeRect(delay) {
     setTimeout(function () {
       resolve(jquery__WEBPACK_IMPORTED_MODULE_0___default()('.square').fadeOut(1000, function () {
         var fitzHead = new Image();
-        fitzHead.src = '../../images/characters/hero/hero-head.png';
+        fitzHead.src = './images/characters/hero/hero-head.png';
 
         fitzHead.onload = function () {
           _screens_battle__WEBPACK_IMPORTED_MODULE_2__["context"].val.drawImage(fitzHead, 260, 551);
@@ -21940,40 +21940,40 @@ var cubes = {
   cyan: '',
   purple: ''
 };
-hero.body = '../../images/characters/hero/hero-body.png';
-hero.head = '../../images/characters/hero/hero-head.png';
+hero.body = './images/characters/hero/hero-body.png';
+hero.head = './images/characters/hero/hero-head.png';
 hero.legs = null;
 hero.hands = null;
 hero.weapon = null;
 hero.accessory = null;
-square.body = '../../images/characters/square/square-body.png';
+square.body = './images/characters/square/square-body.png';
 square.head = null;
-square.mouth = '../../images/characters/square/square-mouth.png';
+square.mouth = './images/characters/square/square-mouth.png';
 square.legs = null;
 square.hands = null;
 square.weapon = null;
-square.accessory = '../../images/characters/square/square-accessory.png';
-eye.body = '../../images/characters/eye/eye.png';
+square.accessory = './images/characters/square/square-accessory.png';
+eye.body = './images/characters/eye/eye.png';
 eye.head = null;
-eye.eyes = '../../images/characters/eye/eye-closed-eyes.png';
-eye.mouth = '../../images/characters/eye/eye-mouth.png';
+eye.eyes = './images/characters/eye/eye-closed-eyes.png';
+eye.mouth = './images/characters/eye/eye-mouth.png';
 eye.legs = null;
 eye.hands = null;
 eye.weapon = null;
 eye.accessory = null;
-shark.body = '../../images/characters/shark/shark-body.png';
-shark.body2 = '../../images/characters/shark/shark-body2.png';
-shark.eyes = '../../images/characters/shark/shark-eye.png';
+shark.body = './images/characters/shark/shark-body.png';
+shark.body2 = './images/characters/shark/shark-body2.png';
+shark.eyes = './images/characters/shark/shark-eye.png';
 shark.head = null;
 shark.legs = null;
 shark.hands = null;
-shark.weapon = '../../images/characters/shark/leshenko.png';
-shark.weapon2 = '../../images/characters/shark/leshenkoHit.png';
-shark.accessory = '../../images/characters/shark/drop.png';
-cubes.yellow = '../../images/characters/square/yellow-cube.png';
-cubes.green = '../../images/characters/square/green-cube.png';
-cubes.purple = '../../images/characters/square/purple-cube.png';
-cubes.cyan = '../../images/characters/square/cyan-cube.png';
+shark.weapon = './images/characters/shark/leshenko.png';
+shark.weapon2 = './images/characters/shark/leshenkoHit.png';
+shark.accessory = './images/characters/shark/drop.png';
+cubes.yellow = './images/characters/square/yellow-cube.png';
+cubes.green = './images/characters/square/green-cube.png';
+cubes.purple = './images/characters/square/purple-cube.png';
+cubes.cyan = './images/characters/square/cyan-cube.png';
 
 /***/ }),
 
@@ -22161,8 +22161,7 @@ function battle() {
 
   background.onload = function () {
     cvx.drawImage(background, 0, 0);
-  }; //cvx.globalAlpha = 1;
-
+  };
 
   cvx.globalAlpha = 0.5;
   var initDtlsInt = setInterval(function () {
@@ -22457,7 +22456,7 @@ function initHero(context) {
 function initDetails(context) {
   // FITZ HAND
   var heroHand = new Image();
-  heroHand.src = '../../images/characters/hero/hero-hand.png';
+  heroHand.src = './images/characters/hero/hero-hand.png';
   images.heroHand = heroHand;
 
   heroHand.onload = function () {
@@ -22466,7 +22465,7 @@ function initDetails(context) {
 
 
   var fire = new Image();
-  fire.src = '../../images/characters/hero/weapon/fire.png';
+  fire.src = './images/characters/hero/weapon/fire.png';
   images.fire = fire;
 
   fire.onload = function () {
@@ -22475,7 +22474,7 @@ function initDetails(context) {
 
 
   var hole = new Image();
-  hole.src = '../../images/characters/additional/hole.png';
+  hole.src = './images/characters/additional/hole.png';
   images.hole = hole;
 
   hole.onload = function () {
@@ -22484,7 +22483,7 @@ function initDetails(context) {
 
 
   var skillet = new Image();
-  skillet.src = '../../images/characters/hero/weapon/skillet.png';
+  skillet.src = './images/characters/hero/weapon/skillet.png';
   images.skillet = skillet;
 
   skillet.onload = function () {
@@ -22493,7 +22492,7 @@ function initDetails(context) {
 
 
   var heroHeadMad = new Image();
-  heroHeadMad.src = '../../images/characters/hero/hero-head-attack.png';
+  heroHeadMad.src = './images/characters/hero/hero-head-attack.png';
   images.heroHeadMad = heroHeadMad;
 
   heroHeadMad.onload = function () {
@@ -22502,7 +22501,7 @@ function initDetails(context) {
 
 
   var heroHeadAttacked = new Image();
-  heroHeadAttacked.src = '../../images/characters/hero/hero-head-attacked.png';
+  heroHeadAttacked.src = './images/characters/hero/hero-head-attacked.png';
   images.heroHeadAttacked = heroHeadAttacked;
 
   heroHeadAttacked.onload = function () {
@@ -22511,7 +22510,7 @@ function initDetails(context) {
 
 
   var heroHeadAttacked2 = new Image();
-  heroHeadAttacked2.src = '../../images/characters/hero/hero-head-attacked2.png';
+  heroHeadAttacked2.src = './images/characters/hero/hero-head-attacked2.png';
   images.heroHeadAttacked2 = heroHeadAttacked2;
 
   heroHeadAttacked2.onload = function () {

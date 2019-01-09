@@ -401,7 +401,7 @@ function initHero(context) {
 function initDetails(context) {
     // FITZ HAND
     let heroHand = new Image();
-    heroHand.src = '../../images/characters/hero/hero-hand.png';
+    heroHand.src = './images/characters/hero/hero-hand.png';
 
     images.heroHand = heroHand;
 
@@ -411,7 +411,7 @@ function initDetails(context) {
 
     // SKILLET'S GUN FIRE
     let fire = new Image();
-    fire.src = '../../images/characters/hero/weapon/fire.png';
+    fire.src = './images/characters/hero/weapon/fire.png';
 
     images.fire = fire;
     
@@ -421,7 +421,7 @@ function initDetails(context) {
 
     // HOLE
     let hole = new Image();
-    hole.src = '../../images/characters/additional/hole.png';
+    hole.src = './images/characters/additional/hole.png';
 
     images.hole = hole;
     
@@ -431,7 +431,7 @@ function initDetails(context) {
  
     // SKILLET
     let skillet = new Image();
-    skillet.src = '../../images/characters/hero/weapon/skillet.png';
+    skillet.src = './images/characters/hero/weapon/skillet.png';
 
     images.skillet = skillet;
 
@@ -441,7 +441,7 @@ function initDetails(context) {
 
     // FITZ MAD HEAD
     let heroHeadMad = new Image();
-    heroHeadMad.src = '../../images/characters/hero/hero-head-attack.png';
+    heroHeadMad.src = './images/characters/hero/hero-head-attack.png';
 
     images.heroHeadMad = heroHeadMad;
 
@@ -451,7 +451,7 @@ function initDetails(context) {
 
     // FITZ ATTACKED HEAD
     let heroHeadAttacked = new Image();
-    heroHeadAttacked.src = '../../images/characters/hero/hero-head-attacked.png';
+    heroHeadAttacked.src = './images/characters/hero/hero-head-attacked.png';
 
     images.heroHeadAttacked = heroHeadAttacked;
 
@@ -461,7 +461,7 @@ function initDetails(context) {
 
     // FITZ ATTACKED HEAD
     let heroHeadAttacked2 = new Image();
-    heroHeadAttacked2.src = '../../images/characters/hero/hero-head-attacked2.png';
+    heroHeadAttacked2.src = './images/characters/hero/hero-head-attacked2.png';
 
     images.heroHeadAttacked2 = heroHeadAttacked2;
 
