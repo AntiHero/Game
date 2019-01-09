@@ -25,9 +25,6 @@ export function task() {
       console.log('math');
       math();
     }
-    
-    
-   
   })
   
   $('.eng-ru').on('click', function(event) {
