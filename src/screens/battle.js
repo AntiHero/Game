@@ -359,7 +359,7 @@ function initFight(context) {
 
           //LESHENKO HIT
           let leshenkoHit2 = new Image();
-          leshenkoHit2.src = '../../images/characters/shark/leshenko2.png';
+          leshenkoHit2.src = './images/characters/shark/leshenko2.png';
   
           images.leshenkoHit2 = leshenkoHit2;
   
