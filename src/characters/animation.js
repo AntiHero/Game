@@ -1,13 +1,12 @@
 import $ from 'jquery';
 import {task} from '../screens/task';
 import {context} from '../screens/battle';
-import {addImageProcess} from '../screens/battle';
 import {images} from '../screens/battle';
 
-import {square} from '../characters/char-parts'
-import {eye} from '../characters/char-parts';
-import {shark} from '../characters/char-parts';
-import {hero} from '../characters/char-parts';
+// import {square} from '../characters/char-parts'
+// import {eye} from '../characters/char-parts';
+// import {shark} from '../characters/char-parts';
+// import {hero} from '../characters/char-parts';
 import {mainHero} from '../screens/battle'
 import {enemy} from '../screens/battle'
 import {wasted} from '../screens/wasted';
@@ -115,33 +114,33 @@ function squareAttack() {
     //     requestAnimationFrame(rageRect);
     // }
  
-    let yellowCube = new Image();
-    yellowCube.src = '../../images/characters/square/yellow-cube.png';
+    // let yellowCube = new Image();
+    // yellowCube.src = '../../images/characters/square/yellow-cube.png';
 
-    let greenCube = new Image();
-    greenCube.src = '../../images/characters/square/green-cube.png';
+    // let greenCube = new Image();
+    // greenCube.src = '../../images/characters/square/green-cube.png';
 
-    let cyanCube = new Image();
-    cyanCube.src = '../../images/characters/square/cyan-cube.png';
+    // let cyanCube = new Image();
+    // cyanCube.src = '../../images/characters/square/cyan-cube.png';
 
-    let purpleCube = new Image();
-    purpleCube.src = '../../images/characters/square/purple-cube.png';
+    // let purpleCube = new Image();
+    // purpleCube.src = '../../images/characters/square/purple-cube.png';
 
-    yellowCube.onload = function(){
-        cvx.drawImage(yellowCube, -100, -100);   
-    }
+    // yellowCube.onload = function(){
+    //     cvx.drawImage(yellowCube, -100, -100);   
+    // }
 
-    greenCube.onload = function(){
-        cvx.drawImage(greenCube, -100, -100);   
-    }
+    // greenCube.onload = function(){
+    //     cvx.drawImage(greenCube, -100, -100);   
+    // }
 
-    purpleCube.onload = function(){
-        cvx.drawImage(purpleCube, -100, -100);   
-    }
+    // purpleCube.onload = function(){
+    //     cvx.drawImage(purpleCube, -100, -100);   
+    // }
 
-    cyanCube.onload = function(){
-        cvx.drawImage(cyanCube, -100, -100);   
-    }
+    // cyanCube.onload = function(){
+    //     cvx.drawImage(cyanCube, -100, -100);   
+    // }
 
     // let rage = new Image();
     // rage.src = '../../images/characters/square/square-rage.png';
@@ -160,6 +159,8 @@ function squareAttack() {
     let cubesAcc = 0.8;
     let flag = false;
 
+
+
     function fadeRectIn() {
         opacity0 += deltaUp;
 
@@ -176,26 +177,27 @@ function squareAttack() {
         // cCubeX += 0.5; 
 
         if (yCubeY >= 700 && flag === false) {
-            yCubeY -= 1.2; 
-            gCubeY -= 1.5; 
+            
+            yCubeY -= 1.2;
+            gCubeY -= 1.5;
             pCubeY -= 1.3; 
-            cCubeY -= 1.7; 
+            cCubeY -= 1.7;
         } else {
             flag = true;
-            yCubeY += 0.1 + cubesAcc;
-            gCubeY += 0.1 + cubesAcc;
-            pCubeY += 0.1 + cubesAcc;
-            cCubeY += 0.1 + cubesAcc;
-            cubesAcc += 2.3;
+            yCubeY += 1 + cubesAcc;
+            gCubeY += 1 + cubesAcc;
+            pCubeY += 1 + cubesAcc;
+            cCubeY += 1 + cubesAcc; 
+            cubesAcc += 1.1;
         }
 
         
 
         cvx.globalAlpha = opacity0;
-        cvx.drawImage(yellowCube, yCubeX, yCubeY);
-        cvx.drawImage(greenCube, gCubeX, gCubeY);  
-        cvx.drawImage(purpleCube, pCubeX, pCubeY);  
-        cvx.drawImage(cyanCube, cCubeX, cCubeY); 
+        cvx.drawImage(images.yellowCube, yCubeX, yCubeY);
+        cvx.drawImage(images.greenCube, gCubeX, gCubeY);  
+        cvx.drawImage(images.purpleCube, pCubeX, pCubeY);  
+        cvx.drawImage(images.cyanCube, cCubeX, cCubeY); 
 
              
         //cvx.drawImage(rage, 1404, 643);  
@@ -210,6 +212,7 @@ function squareAttack() {
 
         if (cubesAcc >= 40) {
             cubesAcc = 0.5;
+
             //fallRect();
             return fallingRect();
         }
@@ -233,7 +236,7 @@ function squareAttack() {
         cvx.drawImage(images.background, 0, 0);
         
         
-        if (bigCubeY >20) {
+        if (bigCubeY >-50) {
             cvx.drawImage(images.heroHeadAttacked, 260, 551);
         } else {
             cvx.drawImage(images.heroHead, 260, 551);
@@ -242,6 +245,7 @@ function squareAttack() {
         cvx.drawImage(images.heroBody, 150, 550); 
         cvx.drawImage(images.squareBody, 1400, 600); 
         cvx.drawImage(bigCube, 150, bigCubeY); 
+   
 
         cubesAcc += 0.5;
         bigCubeY += cubesAcc;
@@ -269,13 +273,14 @@ function squareAttack() {
     let fadeRectOutFlag = true;
 
     function fadeRectOut() {
-        opacity1 += deltaDown;
+        opacity1 -= 0.03;
  
         cvx.globalAlpha = 1;
         cvx.drawImage(images.background, 0, 0); 
         cvx.drawImage(images.heroHeadAttacked, 260, 551); 
         cvx.drawImage(images.heroBody, 150, 550); 
         cvx.drawImage(images.squareBody, 1400, 600); 
+  
 
         cvx.globalAlpha = opacity1;
         cvx.drawImage(bigCube, 150, 526); 
@@ -288,6 +293,7 @@ function squareAttack() {
             cvx.drawImage(images.heroHead, 260, 551); 
             cvx.drawImage(images.heroBody, 150, 550); 
             cvx.drawImage(images.squareBody, 1400, 600); 
+
      
         }
         console.log('shit');
@@ -305,9 +311,7 @@ function squareAttack() {
 }
 
 function sharkAttack(context) {
-    console.log('shark attacks');
 
-    
 
     setTimeout(function() {
         context.drawImage(images.sharkBody2, 1300, 600);
@@ -330,7 +334,7 @@ function sharkAttack(context) {
 
         context.setTransform(1,0,0,1,0,0);
         context.drawImage(images.background, 0, 0); 
-        context.drawImage(images.heroHeadAttacked, 260, 551); 
+        context.drawImage(images.heroHeadAttacked2, 260, 551); 
         context.drawImage(images.heroBody, 150, 550); 
         context.drawImage(images.sharkBody2, 1300, 600);
 
@@ -347,7 +351,7 @@ function sharkAttack(context) {
         if (x <= 250) {
             context.drawImage(images.leshenkoHit, x, y);
             context.setTransform(1,0,0,1,0,0);
-              sharkAttackQueue().then(function() {
+              sharkAttackQueue().then(leshFadeOut).then(function() {
                 setTimeout(() => {
                     context.drawImage(images.heroHead, 260, 551); 
                     context.drawImage(images.sharkBody, 1300, 600);
@@ -359,62 +363,85 @@ function sharkAttack(context) {
                     } else {
                         $('.start_btn').bind('click', task);
                     }
-                   // $('.start_btn').bind('click', task);
+    
                 }, 500); 
                 
             });
-            //leshFadeOut();
-            return 0;
 
-            //leshFadeOut(x, y, rad);
+            return 0;
         }
-        console.log(x);
 
     }
 
     leshenkoHit();
 
-    
+    opacity = 1;
     function leshFadeOut() {
-        opacity -= 0.01;
-
-        context.globalAlpha = 1.0;
-        context.setTransform(1,0,0,1,0,0);
-        context.drawImage(images.background, 0, 0); 
-        context.drawImage(images.heroHeadAttacked, 260, 551); 
-        context.drawImage(images.heroBody, 150, 550); 
-        context.drawImage(images.sharkBody, 1300, 600); 
-
-        context.globalAlpha = opacity;
-        console.log('blyeat');
-        console.log(x);
-        if (flag) {
-            //context.translate(356, 556);
-            context.rotate(24);
-            context.drawImage(images.leshenkoHit, 266, 546); 
-            //context.translate(-356, -556);
-            
-            flag = false;
-        }
+        console.log(opacity);
         
-        context.drawImage(images.leshenkoHit, 266, 546); 
 
-        if(opacity >= 0.9) {
+        context.globalAlpha = 1;
+        context.drawImage(images.background, 0, 0); 
+        context.drawImage(images.heroHeadAttacked2, 260, 551); 
+        context.drawImage(images.heroBody, 150, 550); 
+        context.drawImage(images.sharkBody2, 1300, 600);
+
+        opacity -= 0.1;
+        context.globalAlpha = opacity;
+        context.drawImage(images.leshenkoHit2, 283, 555);
+
+        if (opacity <= 0.0) {
+            context.globalAlpha = 1;
+            context.drawImage(images.background, 0, 0); 
+            context.drawImage(images.heroHeadAttacked2, 260, 551); 
+            context.drawImage(images.heroBody, 150, 550); 
+            context.drawImage(images.sharkBody2, 1300, 600);
+        }
+
+        if (opacity > 0.0) {
             requestAnimationFrame(leshFadeOut);
         }
-
-        if(opacity < 0.0) {
-          
-            return 0;
-        }
     }
+    // function leshFadeOut() {
+    //     opacity -= 0.01;
+
+    //     context.globalAlpha = 1.0;
+    //     context.setTransform(1,0,0,1,0,0);
+    //     context.drawImage(images.background, 0, 0); 
+    //     context.drawImage(images.heroHeadAttacked, 260, 551); 
+    //     context.drawImage(images.heroBody, 150, 550); 
+    //     context.drawImage(images.sharkBody, 1300, 600); 
+
+    //     context.globalAlpha = opacity;
+    //     console.log('blyeat');
+    //     console.log(x);
+    //     if (flag) {
+    //         //context.translate(356, 556);
+    //         context.rotate(24);
+    //         context.drawImage(images.leshenkoHit, 266, 546); 
+    //         //context.translate(-356, -556);
+            
+    //         flag = false;
+    //     }
+        
+    //     context.drawImage(images.leshenkoHit, 266, 546); 
+
+    //     if(opacity >= 0.9) {
+    //         requestAnimationFrame(leshFadeOut);
+    //     }
+
+    //     if(opacity < 0.0) {
+          
+    //         return 0;
+    //     }
+    // }
 
     function sharkAttackQueue() {
         
         return new Promise (function(resolve, reject) {
             setTimeout(() => {
                 context.drawImage(images.background, 0, 0); 
-                context.drawImage(images.heroHeadAttacked, 260, 551); 
+                context.drawImage(images.heroHeadAttacked2, 260, 551); 
                 context.drawImage(images.heroBody, 150, 550); 
                 context.drawImage(images.sharkBody2, 1300, 600);
 
@@ -470,6 +497,7 @@ function eyeAttack(context) {
 
             eyeAttackRedraw(context).then(function() {
                 context.drawImage(images.heroHead, 260, 551);
+                context.drawImage(images.eyeEyes, 1400, 550);
                 console.log(enemy.val.damage, 'eye');
                 $('.player_health_bar').css('background', 'linear-gradient(to right, ' + 'red ' + `${mainHero.val.health -= enemy.val.damage}` + '%,'  + 'transparent ' + `0` + '%)');
                 if (mainHero.val.health <= 0) {
@@ -479,6 +507,10 @@ function eyeAttack(context) {
                     $('.start_btn').bind('click', task);
                 }
                 
+            }).then(function() {
+                setTimeout(function() {
+                    context.drawImage(images.eyeBody, 1400, 550);
+                },500);
             });           
         }
 
@@ -487,10 +519,6 @@ function eyeAttack(context) {
         }
     }
     eyeShoot();
-    console.log(colorStart, colorEnd);
-    
-   
-    
 }
 
 function fitzAttack(context) {
@@ -530,7 +558,8 @@ function fitzAttack(context) {
             context.drawImage(images.heroBody, 150, 550);
             context.drawImage(images.heroHand, 310, 627);
             if (mode.value === 'easy') {
-                context.drawImage(images.squareBody, 1400, 600); 
+                context.drawImage(images.squareBody, 1400, 600);
+
                 // score.value += 10;
                 // $('.score').text(`Score: ${score.value}`);
 
@@ -571,7 +600,8 @@ function fitzAttack(context) {
         context.drawImage(images.skillet, 300, y); 
         context.drawImage(images.heroHand, 310, 627); 
         if (mode.value === 'easy') {
-            context.drawImage(images.squareBody, 1400, 600); 
+            context.drawImage(images.squareBody, 1400, 600);
+
         } else if (mode.value === 'medium') {
             context.drawImage(images.eyeBody, 1400, 550); 
         } else if (mode.value === 'hard'){
@@ -601,7 +631,7 @@ function fitzAttack(context) {
                     context.drawImage(images.heroHead, 260, 551); 
                     if (mode.value === 'easy') {
                         context.drawImage(images.squareBody, 1400, 600); 
-                        context.drawImage(images.squareBody, 1400, 600); 
+      
                         $('.enemy_health_bar').css('background', 'linear-gradient(to left, ' + 'red ' + `${enemy.val.health -= mainHero.val.damage}` + '%,'  + 'transparent ' + `0` + '%)');
                         score.value += 10;
                         $('.score').text(`Score: ${score.value}`);
@@ -719,7 +749,8 @@ function skilletAttack(x, y) {
         context.val.drawImage(images.heroHand, 310, 627);
         if (mode.value === 'easy') {
             context.val.drawImage(images.squareBody, 1400, 600); 
-            context.val.drawImage(images.squareMouth, 1450, 717);  
+            context.val.drawImage(images.squareMouth, 1450, 717); 
+    
         } else if (mode.value === 'medium') {
             context.val.drawImage(images.eyeEyes, 1400, 550); 
             context.val.drawImage(images.eyeMouth, 1448, 730); 

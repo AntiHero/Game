@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe');
 @import url('https://fonts.googleapis.com/css?family=Bungee+Inline');
 @import url('https://fonts.googleapis.com/css?family=Nosifer');
+@import url('https://fonts.googleapis.com/css?family=Kranky');
+@import url('https://fonts.googleapis.com/css?family=Staatliches');
 
 html, body {
   margin: 0;
@@ -27,10 +29,13 @@ li, a{
 .intro_header {
   position: absolute;
   top: 15%;
-  font-size: 22vh;
+  font-size: 27vh;
+  font-weight: 800;
   color: #da2525;
   text-transform: uppercase;
-  font-family: 'Nosifer', cursive;
+  font-family: 'Kranky', cursive;
+  /* font-family: 'Staatliches', cursive; */
+  /* font-family: 'Nosifer', cursive; */
   /* font-family: 'Eater', cursive;
   font-family: 'ZCOOL KuaiLe', cursive; */
 }
@@ -57,7 +62,8 @@ li, a{
 
 .form_nickname{
   position: absolute;
-  font-family: 'ZCOOL KuaiLe', cursive;
+  font-family: 'Kranky', cursive;
+  /* font-family: 'ZCOOL KuaiLe', cursive; */
   font-weight: 700;
   padding: 0;
   display: flex;
@@ -70,7 +76,8 @@ li, a{
 } 
 
 .nickname_input {
-  font-family: 'ZCOOL KuaiLe', cursive;
+  /* font-family: 'ZCOOL KuaiLe', cursive; */
+  font-family: 'Kranky', cursive;
   text-align: center;
   text-transform: uppercase;
   outline: none;
@@ -90,7 +97,8 @@ li, a{
   color: #130b0b;
   font-weight: 800;
   font-size: 22px;
-  font-family: 'ZCOOL KuaiLe', cursive;
+  /* font-family: 'ZCOOL KuaiLe', cursive; */
+  font-family: 'Kranky', cursive;
   border: 1px solid #da2525;
   border-radius: 20%;
   height: 30px;
@@ -114,9 +122,10 @@ li, a{
 
 .menu{
   position: absolute;
-  font-family: 'ZCOOL KuaiLe', cursive;
-  width: 100%;
-  height: 100%;
+  /* font-family: 'ZCOOL KuaiLe', cursive; */
+  font-family: 'Kranky', cursive;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-flow: column wrap;
   align-items: center;
@@ -127,15 +136,15 @@ li, a{
 }
 
 .menu_middle{
-  width: 15%;
+  width: 15vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: absolute;
   padding: 0;
-  top: 33%;
-  font-size: 36px;
+  top: 30vh;
+  font-size: 4vh;
   color: #da2525;
   text-transform: uppercase;
   list-style: none;
@@ -175,9 +184,9 @@ li, a{
 }
 
 .menu_small a{
-  padding: 5px 26px;
+  padding: 1px 2vh;
   display: block;
-  margin: 4px 0;
+  margin: 2px 0;
   position: relative;
   transition: 0.3s;
   opacity: 0.3;
@@ -187,36 +196,12 @@ li, a{
   opacity: 1;
 }
 
-/* .menu_item:hover .menu_small{
-  max-height: 10em;
-} */
-
-/* .menu_small a:before{
-  content: "";
-  position: absolute;
-  width: 6px;
-  height: 100%;
-  background: #bb1f1f;
-  left: 0;
-  top:0;
-} */
-
-/* 
-.menu_list li{
-  padding: 10px 0;
-}
-
-.menu_list li:hover{
-  cursor: pointer;
-  color: #bb1f1f;
-} */
-
 .menu_player_name{
   position: absolute;
   display: inline-block;
   top: 10px;
   right: 10px;
-  font-size: 18px;
+  font-size: 3vh;
   font-weight: 800;
   text-transform: uppercase;
   color: #bb1f1f;
@@ -236,7 +221,8 @@ li, a{
   top: 10px;
   font-size: 18px;
   font-weight: 800;
-  font-family: 'ZCOOL KuaiLe', cursive;
+  /* font-family: 'ZCOOL KuaiLe', cursive; */
+  font-family: 'Kranky', cursive;
   text-transform: uppercase;
   color: #d1f023;
 }
@@ -274,11 +260,6 @@ li, a{
       black    0%
   );
 }
-
-
-/* #da2525    100%,
-      #3d3636fa    0% */
-
 
 .battle_canvas{
   display: block;
@@ -365,7 +346,8 @@ li, a{
   text-transform: uppercase;
   font-weight: 800;
   font-size: 32px;
-  font-family: 'ZCOOL KuaiLe', cursive;
+  /* font-family: 'ZCOOL KuaiLe', cursive; */
+  font-family: 'Kranky', cursive;
   color: #d1f023;
   animation-duration: 1s;
   animation-name: start_game;
@@ -410,11 +392,12 @@ li, a{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 25vh;
+  font-family: 'Kranky', cursive;
+  /* width: 25vh; */
   height: 20vh;
   min-width: 100px;
   min-height: 100px;
-  
+  font-size: 2.5vh;
   /*
   top: 30%;
   margin: auto; */
@@ -445,7 +428,8 @@ li, a{
 .math_solve, .eng_solve, .capitals_solve {
   width: 70%;
   margin: 8% 0;
-  font-family: 'ZCOOL KuaiLe', cursive;
+  /* font-family: 'ZCOOL KuaiLe', cursive; */
+  font-family: 'Kranky', cursive;
   text-align: center;
   
   outline: none;
@@ -453,7 +437,7 @@ li, a{
   color: #d6da20;
   /* color: #36c423; */
   font-weight: 800;
-  font-size: 20px;
+  font-size: 2.5vh;
   border: none;
 }
 
@@ -467,16 +451,19 @@ li, a{
 
 
 .math_solve::placeholder{
+  font-family: 'Kranky', cursive;
   /* color: #36c423; */
   color: #d6da20;
 }
 
 .eng_solve::placeholder{
+  font-family: 'Kranky', cursive;
   /* color: #36c423; */
   color: #d6da20;
 }
 
 .capitals_solve::placeholder{
+  font-family: 'Kranky', cursive;
   /* color: #36c423; */
   color: #d6da20;
 }
@@ -508,7 +495,8 @@ li, a{
 
 
 .math_task, .eng_task, .capitals_task{
-  font-family: 'ZCOOL KuaiLe', cursive;
+  /* font-family: 'ZCOOL KuaiLe', cursive; */
+  font-family: 'Kranky', cursive;
   /* color: #36c423; */
   color: #d6da20;
   font-size: 1.2em;
@@ -609,6 +597,55 @@ li, a{
   font-size: 15vh;
 }
 
+
+.score_page{
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0f0a0a;
+  color: #bb1f1f;
+  /* font-family: 'ZCOOL KuaiLe', cursive; */
+  font-family: 'Kranky', cursive;
+  font-size: 5vh;
+  text-align: center;
+  opacity: 0;
+}
+
+.help_page{
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0f0a0a;
+  color: #bb1f1f;
+  /* font-family: 'ZCOOL KuaiLe', cursive; */
+  font-family: 'Kranky', cursive;
+  font-size: 5vh;
+  text-align: center;
+  opacity: 0;
+}
+
+.help_page p{
+  width: 40vw;
+  padding: 5% auto;
+  font-size: 5vh;
+}
+
+.score_page h2{
+  position: absolute;
+  top: 3vh;
+  width: inherit;
+  font-size: 10vh;
+  color: inherit;
+}
 
 
 @keyframes start_game {

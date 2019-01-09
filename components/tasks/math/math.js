@@ -93,43 +93,75 @@ function decision(mathTask) {
 }
 
 function makeEasy() {
-  const easyMin = 1;
-  const easyMax = 9;
-  const operations = ['+', '-', '*'];
+  //const easyMin = 1;
+  //const easyMax = 9;
+  let tasks = [];
+  const operations = ['+', '-'];
 
-  const operand1 = Math.floor(Math.random()*(easyMin + easyMax) + easyMin);
-  const operand2 = Math.floor(Math.random()*(easyMin + easyMax) + easyMin);
+  const operand1 = Math.floor(Math.random()*(30  - 1) + 1);
+  const operand2 = Math.floor(Math.random()*(20  - 10) + 10);
   const sign  = operations[Math.floor(Math.random()*(operations.length))];
+  const sign2  = operations[Math.floor(Math.random()*(operations.length))];
 
-  const firstLvl = operand1 + ' ' + sign + ' ' + operand2;
-  const task = firstLvl;
-  return task;
+  tasks[0] = operand1 + ' ' + sign + ' ' + operand2;
+  
+  tasks[1] = Math.floor(Math.random()*(10 - 1) +1) +  '*' + Math.floor(Math.random()*(10 - 1) +1);
+
+  tasks[2] = Math.floor(Math.random()*(11 - 1) + 1) + sign2 + Math.floor(Math.random()*(10 - 1) + 1)  + sign  + Math.floor(Math.random()*(10 - 1) + 1) 
+   + sign2 + Math.floor(Math.random()*(11 - 1) + 1);
+
+  let devider = Math.floor(Math.random()*(10 - 2) + 2);
+
+  tasks[3] = Math.floor(Math.random()* (10 - 1) + 1) * devider + '/' + devider;
+  return tasks[Math.floor(Math.random()*tasks.length)];
 }
 
 function makeMedium() {
-  const mediumMin = 5;
-  const mediumMax = 15;
-  const operations = ['+', '-', '*'];
+  let tasks = [];
+  const operations = ['+', '-'];
 
-  const operand1 = Math.floor(Math.random()*(mediumMin + mediumMax) + mediumMin);
-  const operand2 = Math.floor(Math.random()*(mediumMin + mediumMax) + mediumMin);
+  const operand1 = Math.floor(Math.random()*(100 - 30) + 30);
+  const operand2 = Math.floor(Math.random()*(100  - 30) + 30);
   const sign  = operations[Math.floor(Math.random()*(operations.length))];
+  const sign2  = operations[Math.floor(Math.random()*(operations.length))];
 
-  const firstLvl = operand1 + ' ' + sign + ' ' + operand2;
-  const task = firstLvl;
-  return task;
+  tasks[0] = operand1 + ' ' + sign + ' ' + operand2;
+  
+  tasks[1] = Math.floor(Math.random()*(20 - 10) + 10) +  '*' + Math.floor(Math.random()*(11 - 5) + 5);
+
+  tasks[2] = Math.floor(Math.random()*(20 - 5) + 5) + sign2 + Math.floor(Math.random()*(37 - 20) + 20)  + sign  + Math.floor(Math.random()*(30 - 20) + 20) 
+   + sign2 + Math.floor(Math.random()*(40 - 20) + 20);
+
+  tasks[3] = '(' + Math.floor(Math.random()*(11 - 1) + 1) + sign2 + Math.floor(Math.random()*(10 - 1) + 1) + ')'  + '*'  + '(' + Math.floor(Math.random()*(11 - 1) + 1) 
+   + sign2 + Math.floor(Math.random()*(11 - 1) + 1) + ')';
+
+  let devider = Math.floor(Math.random()*(11 - 5) + 5);
+
+  tasks[4] = Math.floor(Math.random()* (16 - 10) + 10) * devider + '/' + devider;
+  return tasks[Math.floor(Math.random()*tasks.length)];
 }
 
 function makeHard() {
-  const hardMin = 5000;
-  const hardMax = 10000;
-  const operations = ['+', '-', '*'];
+  let tasks = [];
+  const operations = ['+', '-'];
 
-  const operand1 = Math.floor(Math.random()*(hardMin + hardMax) + hardMin);
-  const operand2 = Math.floor(Math.random()*(hardMin + hardMax) + hardMin);
+  const operand1 = Math.floor(Math.random()*(2000 - 500) + 500);
+  const operand2 = Math.floor(Math.random()*(2000  - 500) + 500);
   const sign  = operations[Math.floor(Math.random()*(operations.length))];
+  const sign2  = operations[Math.floor(Math.random()*(operations.length))];
 
-  const firstLvl = operand1 + ' ' + sign + ' ' + operand2;
-  const task = firstLvl;
-  return task;
+  tasks[0] = operand1 + ' ' + sign + ' ' + operand2;
+  
+  tasks[1] = Math.floor(Math.random()*(60 - 30) + 30) +  '*' + Math.floor(Math.random()*(40 - 15) + 15);
+
+  tasks[2] = Math.floor(Math.random()*(300 - 200) + 200) + sign2 + Math.floor(Math.random()*(300 - 200) + 200)  + sign  + Math.floor(Math.random()*(300 - 200) + 200) 
+   + sign2 + Math.floor(Math.random()*(300 - 200) + 200);
+
+  tasks[3] = '(' + Math.floor(Math.random()*(40 - 20) + 20) + sign2 + Math.floor(Math.random()*(40 - 20) + 20) + ')'  + '*'  + '(' + Math.floor(Math.random()*(40 - 20) + 20) 
+   + sign2 + Math.floor(Math.random()*(40 - 20) + 20) + ')';
+
+  let devider = Math.floor(Math.random()*(40 - 20) + 20);
+
+  tasks[4] = Math.floor(Math.random()* (25 - 10) + 10) * devider + '/' + devider;
+  return tasks[Math.floor(Math.random()*tasks.length)];
 }
