@@ -73,7 +73,6 @@ export function battle() {
     cvx.drawImage(background,0,0);   
     }
 
-    //cvx.globalAlpha = 1;
 
     cvx.globalAlpha = 0.5;
     let initDtlsInt = setInterval(function() {
