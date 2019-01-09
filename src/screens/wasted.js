@@ -39,7 +39,7 @@ export function wasted() {
       $('.continue').remove();
       $('.wasted_score').remove();
       $('.menu').remove();
-      
+      $("audio").attr("src", "music/intro.mp3");
       score.value = 0;
 
       menu();

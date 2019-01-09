@@ -2,12 +2,14 @@ import $ from 'jquery';
 import {playerName} from './nickname';
 import {task} from './task';
 import {mode} from './menu';
+import {map} from './menu';
 import {Char} from '../characters/char';
 import {square} from '../characters/char-parts';
 import {eye} from '../characters/char-parts';
 import {shark} from '../characters/char-parts';
 import {hero} from '../characters/char-parts';
 import {score} from '../characters/animation'
+import {cubes} from '../characters/char-parts';
 
 
 export const context = {val:''};
@@ -15,14 +17,11 @@ export const enemy = {val: ''};
 export const mainHero = {val: ''};
 
 export const images = {background: '',heroHead:'', heroHeadmad: '',heroHeadAttacked: '',heroHeadAttacked: '', heroBody: '', heroHand: '', squareBody: '', squareMouth: '', eyeBody: '',
-eyeMouth: '',eyeEyes: '',sharkBody: '',sharkBody2: '', sharkEye:'', drop:'', leshenko: '', leshenkoHit:'', skillet: '', fire: '', hole: ''};
+eyeMouth: '',eyeEyes: '',sharkBody: '',sharkBody2: '', sharkEye:'', drop:'', leshenko: '', leshenkoHit:'', leshenkoHit2:'', skillet: '', fire: '', hole: '', yellowCube: '', purpleCube: '', greenCube: '',
+cyanCube: ''};
 
+let names = ['mad', 'great', 'hunny', 'angry', 'humble'];
 
-
-let requestAnimationFrame = window.requestAnimationFrame ||
-                            window.mozRequestAnimationFrame ||
-                            window.webkitCancelAnimationFrame ||
-                            window.msRequestAnimationFrame;
 let count = 2;
 let cvx;
 
@@ -35,14 +34,7 @@ export function battle() {
     i_1 = 0;
     i_2 = 0;
 
-    
-
-    // $('.menu_item.mode').off('click');
-    // $('.menu_item.map').off('click');
-    // $('.menu_small.mode').unbind('click');
-    // $('.game').unbind('click');
     $('.menu').remove();
-    //$('body').css('background-image', 'url(../../images/backgrounds/background-city.png)');
         
     setPlayersAttr();
 
@@ -62,7 +54,17 @@ export function battle() {
     background.onload = function(){
     cvx.drawImage(background,0,0);   
     }
-    background.src = '../../images/backgrounds/background-city.png';
+
+    if (map.value === "default") {
+        background.src = '../../images/backgrounds/background-city.png';
+    } else if (map.value === "sunny") {
+        background.src = '../../images/backgrounds/background-sunny.png';
+    } else if (map.value === "imaguru") {
+        background.src = '../../images/backgrounds/background-imaguru.png';
+    } else {
+        background.src = '../../images/backgrounds/background-city.png';
+    }
+    
     
     images.background = background;
 
@@ -71,16 +73,11 @@ export function battle() {
     cvx.drawImage(background,0,0);   
     }
 
-    cvx.globalAlpha = 1;
-    
-    //    initDetails(cvx);
-    //    initFight(cvx);
-    //    initHero(cvx);
-       
+    //cvx.globalAlpha = 1;
+
     cvx.globalAlpha = 0.5;
     let initDtlsInt = setInterval(function() {
         i_0++;
-        
         if (i_0 == 2) {
             clearInterval(initDtlsInt);
         }
@@ -91,8 +88,6 @@ export function battle() {
 
     cvx.globalAlpha = 0.5;
     let initFightInt = setInterval(function() {
-        
-        console.log('petuh')
         i_1++;
         if (i_1 == 2) {
             clearInterval(initFightInt);
@@ -111,9 +106,9 @@ export function battle() {
         cvx.globalAlpha = 1.0;
     }, 60);  
 
-
+    
     cvx.globalAlpha = 1.0;
- 
+
     //init(cvx);
     //drawBackground(cvx);
 
@@ -132,12 +127,11 @@ export function battle() {
     // rage.onload = function() {
     //     cvx.drawImage(rage, 1420, 648);
     // }
+        
     setChars();
-    drawSquare();
+    //drawSquare();
     $('.battle_canvas').fadeTo(3500,1,startBattle());
-    //drawSkillet();
-
-    
+    //drawSkillet();  
 }
 
 function startBattle() {
@@ -145,8 +139,18 @@ function startBattle() {
 }
 
 function setPlayersAttr() {
+    let name = names[Math.floor(Math.random()*names.length)];
+
+    if (mode.value === "easy") {
+        name += ' square';
+    } else if (mode.value === "medium") {
+        name += ' eye';
+    } else {
+        name += ' shark';
+    }
+
     let mainName = `<div class="player_name"></div>`;
-    let enemyName =  `<div class="enemy_name">Square</div>`;
+    let enemyName =  `<div class="enemy_name">${name}</div>`;
     let playerHealthBar = `<div class="player_health_bar"></div>`;
     let enemyHealthBar = `<div class="enemy_health_bar"></div>`;
     let startBtn = `<div class="start_btn">attack</div>`;
@@ -167,26 +171,13 @@ function setPlayersAttr() {
 function setChars() {
     if (mode.value === 'easy') {
         enemy.val = new Char('Square', 100, 10, square);
-        //addImageProcess(square.body, 1400, 600).catch(error => console.log(error));
-        //addImageProcess(square.head, 1400, 500).catch(error => console.log(error));
-        //drawChar(square.body, 1400, 600);
-        //addImageProcess(square.accessory, 1405, 645).catch(error => console.log(error));
-        //drawChar();
-        //let rage = `<img class="square_rage" src='../../images/characters/square/square-rage.png'></img>`;
-        //$('body').append(rage);
-        //drawChar(square.accessory, 1420, 650);
+        
     } else if (mode.value === 'medium') {
         enemy.val = new Char('Eye', 100, 20, eye);
-
     } else {
         enemy.val = new Char('Shark', 100, 40, shark);
     }
-
     mainHero.val = new Char('Fitz', 100, 10, hero);
-
-    //addImageProcess(hero.body, 150, 550).catch(error => console.log(error));
-    //addImageProcess(hero.head, 260, 551).catch(error => console.log(error));
-    //drawChar(hero.body, 150, 550);
 }
 
 
@@ -220,14 +211,47 @@ function initFight(context) {
 
         images.squareBody = squareBody;
 
-
         squareBody.onload = function () {
         context.drawImage(squareBody, 1400, 600); 
         }  
 
-        squareBody.onload = function () {
-        context.drawImage(squareBody, 1400, 600); 
-        }  
+        // squareBody.onload = function () {
+        // context.drawImage(squareBody, 1400, 600); 
+        // }  
+        // CUBES
+        let yellowCube = new Image();
+        yellowCube.src = cubes.yellow;
+        images.yellowCube = yellowCube;
+        yellowCube.onload = function () {
+        context.drawImage(yellowCube, -100, -100);  
+        }
+    
+        
+    
+        let greenCube = new Image();
+        greenCube.src = cubes.green;
+        images.greenCube = greenCube;
+        greenCube.onload = function () {
+        context.drawImage(greenCube,  -100, -100);  
+        }
+    
+        
+    
+        let purpleCube = new Image();
+        purpleCube.src = cubes.purple;
+        images.purpleCube = purpleCube;
+        purpleCube.onload = function () {
+        context.drawImage(purpleCube, -100, -100);  
+        }
+
+    
+        let cyanCube = new Image();
+        cyanCube.src = cubes.cyan;
+        images.cyanCube = cyanCube;
+        cyanCube.onload = function () {
+        context.drawImage(cyanCube, -100, -100);  
+        }
+        
 
         //SQUARE MOUTH ATTACKED
         let squareMouth = new Image();
@@ -333,6 +357,16 @@ function initFight(context) {
          leshenkoHit.onload = function () {
          context.drawImage(leshenkoHit, -200, -200);  
          } 
+
+          //LESHENKO HIT
+          let leshenkoHit2 = new Image();
+          leshenkoHit2.src = '../../images/characters/shark/leshenko2.png';
+  
+          images.leshenkoHit2 = leshenkoHit2;
+  
+          leshenkoHit2.onload = function () {
+          context.drawImage(leshenkoHit2, -200, -200);  
+          } 
     }
     
     console.log(i_2);
@@ -354,7 +388,7 @@ function initHero(context) {
 
     // FITZ HEAD
     let heroHead = new Image();
-    heroHead.src = hero.head;//'../../images/characters/hero/hero-head.png';
+    heroHead.src = hero.head;
 
     heroHead.onload = function () {
         context.drawImage(heroHead, 260, 551);  
@@ -362,16 +396,6 @@ function initHero(context) {
 
     images.heroHead = heroHead;
 
-   
-    //context.drawImage(images.heroHead, 260, 551); 
-    //context.drawImage(images.heroBody, 150, 550);  
-
-    // count--;
-
-    // if (count > 0) {
-    //     requestAnimationFrame(initHero);
-    // }
-    console.log(i_0);
 }
 
 
@@ -455,6 +479,8 @@ function initDetails(context) {
     sharkBody2.src = shark.body2;
 
     images.sharkBody2 = sharkBody2;
+
+    
 
     console.log(i_1);
 }

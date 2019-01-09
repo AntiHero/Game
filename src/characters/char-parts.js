@@ -2,7 +2,7 @@ export const hero = {body:'', head:'', legs:'', hands:'', weapon:'', accessory:'
 export const square = {body:'', head:'', legs:'', hands:'', weapon:'', accessory:''};
 export const eye = {body:'', head:'', legs:'', hands:'', weapon:'', accessory:''};
 export const shark = {body:'', head:'', legs:'', hands:'', weapon:'', accessory:''};
-
+export const cubes = {yellow:'', green:'', cyan:'', purple:''};
 
 hero.body = '../../images/characters/hero/hero-body.png';
 hero.head = '../../images/characters/hero/hero-head.png';
@@ -37,3 +37,9 @@ shark.hands = null;
 shark.weapon = '../../images/characters/shark/leshenko.png';
 shark.weapon2 = '../../images/characters/shark/leshenkoHit.png';
 shark.accessory = '../../images/characters/shark/drop.png';
+
+
+cubes.yellow = '../../images/characters/square/yellow-cube.png';
+cubes.green = '../../images/characters/square/green-cube.png'
+cubes.purple = '../../images/characters/square/purple-cube.png'
+cubes.cyan = '../../images/characters/square/cyan-cube.png'

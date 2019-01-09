@@ -1,11 +1,14 @@
 import $ from 'jquery';
 import {battle} from './battle';
 import {playerName} from './nickname';
+import {score} from './score';
+import {help} from './help';
 
 export const mode = {value: 'easy'};
+export const map = {value: 'default'};
 
 export function menu() {
-
+  let sourceUrl = "music/default.mp3";
   let mapClk = false;
   let modeClk = false;
 
@@ -29,13 +32,13 @@ export function menu() {
       <li class="menu_item map" id="map">
         <a href="#map" class="menu_btn_map">Map</a>
         <div class="menu_small map">
-          <a href="#">Default</a>
-          <a href="#">Sunny</a>
-          <a href="#">Imagure</a>
+          <a href="#" class="menu_default">Default</a>
+          <a href="#" class="menu_sunny">Sunny</a>
+          <a href="#" class="menu_imaguru">Imagure</a>
         </div>
       </li>
-      <li class="menu_item">Score</li>
-      <li class="menu_item">Help</li>
+      <li class="menu_item scores">Score</li>
+      <li class="menu_item help">Help</li>
     </div>
   </div>
   `
@@ -45,16 +48,16 @@ export function menu() {
   }
 
   $(document).on('click', function(event) {
-    //event.stopImmediatePropagation();
 
     if($(event.target).hasClass('game')) {
       $('.menu_small.mode').css('max-height','0em');
+      $("audio").attr("src", sourceUrl);
       battle();
     } 
     
     if ($(event.target).hasClass('menu_btn_mode')) {
-
       modeClk ^= true; 
+      $('.menu_small.map').css('max-height','0em');
       modeSelect(modeClk);
     } 
 
@@ -62,7 +65,6 @@ export function menu() {
       mode.value = 'easy';
       $('.menu_small.mode').css('max-height','0em');
       modeClk = false;
-
     } else if ($(event.target).hasClass('menu_medium')){
       mode.value = 'medium';
       $('.menu_small.mode').css('max-height','0em');
@@ -72,20 +74,49 @@ export function menu() {
       mode.value = 'hard';
       $('.menu_small.mode').css('max-height','0em');
       modeClk = false;
-
     } 
 
     if($(event.target).hasClass('menu_btn_map')) {
       $('.menu_small.mode').css('max-height','0em');
+      mapClk ^= true; 
       mapSelect(mapClk);
     }
-  })
 
+    if ($(event.target).hasClass('menu_default')) {
+      map.value = 'default';
+      $('.menu_small.map').css('max-height','0em');
+      mapClk = false;
+
+    } else if ($(event.target).hasClass('menu_sunny')){
+      map.value = 'sunny';
+      $('.menu_small.map').css('max-height','0em');
+      mapClk = false;
+ 
+    } else if ($(event.target).hasClass('menu_imaguru')) {
+      map.value = 'imaguru';
+      $('.menu_small.map').css('max-height','0em');
+      mapClk = false;
+
+    } 
+
+    if($(event.target).hasClass('scores')) {
+      $('.menu_small.map').css('max-height','0em');
+      $('.menu_small.mode').css('max-height','0em');
+      score();
+    }
+
+    if($(event.target).hasClass('help')) {
+      $('.menu_small.map').css('max-height','0em');
+      $('.menu_small.mode').css('max-height','0em');
+      help();
+    }
+  })
+  console.log(map.value);
 }
 
 function modeSelect(flag) {
   if (flag){
-    $('.menu_small.mode').css('max-height','40em');
+    $('.menu_small.mode').css('max-height','18.5vh');
   }
   else {
     $('.menu_small.mode').css('max-height','0em');
@@ -94,7 +125,7 @@ function modeSelect(flag) {
 
 function mapSelect(flag) {
   if (flag){
-    $('.menu_small.map').css('max-height','40em');
+    $('.menu_small.map').css('max-height','18.5vh');
   }
   else {
     $('.menu_small.map').css('max-height','0em');
