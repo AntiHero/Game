@@ -21447,14 +21447,11 @@ function squareAttack() {
       cvx.drawImage(_screens_battle__WEBPACK_IMPORTED_MODULE_2__["images"].squareBody, 1400, 600);
     }
 
-    console.log('shit');
-
     if (opacity1 >= 0.0) {
       if (fadeRectOutFlag) {
         fadeRectOutFlag = false;
       }
 
-      console.log('govno');
       requestAnimationFrame(fadeRectOut);
     }
   }
@@ -21489,7 +21486,6 @@ function sharkAttack(context) {
     context.rotate(rad);
     context.translate(-x - 100, -y - 40);
     context.drawImage(_screens_battle__WEBPACK_IMPORTED_MODULE_2__["images"].leshenko, x, y);
-    console.log(x, y, rad);
 
     if (x > 250) {
       requestAnimationFrame(leshenkoHit);
@@ -21521,7 +21517,6 @@ function sharkAttack(context) {
   opacity = 1;
 
   function leshFadeOut() {
-    console.log(opacity);
     context.globalAlpha = 1;
     context.drawImage(_screens_battle__WEBPACK_IMPORTED_MODULE_2__["images"].background, 0, 0);
     context.drawImage(_screens_battle__WEBPACK_IMPORTED_MODULE_2__["images"].heroHeadAttacked2, 260, 551);
@@ -21584,7 +21579,6 @@ function sharkAttack(context) {
 }
 
 function eyeAttack(context) {
-  console.log('eyeAttacks');
   var radius = 1;
   var colors = ['#66ff33', '#0066ff', '#ff33bb', '#ffff00', '#ff3300'];
   var colorStart = 0; //= colors[Math.floor(Math.random()*(colors.length - 1))];
@@ -21625,7 +21619,6 @@ function eyeAttack(context) {
       eyeAttackRedraw(context).then(function () {
         context.drawImage(_screens_battle__WEBPACK_IMPORTED_MODULE_2__["images"].heroHead, 260, 551);
         context.drawImage(_screens_battle__WEBPACK_IMPORTED_MODULE_2__["images"].eyeEyes, 1400, 550);
-        console.log(_screens_battle__WEBPACK_IMPORTED_MODULE_2__["enemy"].val.damage, 'eye');
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('.player_health_bar').css('background', 'linear-gradient(to right, ' + 'red ' + "".concat(_screens_battle__WEBPACK_IMPORTED_MODULE_2__["mainHero"].val.health -= _screens_battle__WEBPACK_IMPORTED_MODULE_2__["enemy"].val.damage) + '%,' + 'transparent ' + "0" + '%)');
 
         if (_screens_battle__WEBPACK_IMPORTED_MODULE_2__["mainHero"].val.health <= 0) {
@@ -21807,7 +21800,6 @@ function fitzAttack(context) {
 }
 
 function squareDmg(context) {
-  console.log('square damaged 1');
   context.fillStyle = '';
 }
 
