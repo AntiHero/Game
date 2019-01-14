@@ -3,19 +3,13 @@ import {task} from '../screens/task';
 import {context} from '../screens/battle';
 import {images} from '../screens/battle';
 
-// import {square} from '../characters/char-parts'
-// import {eye} from '../characters/char-parts';
-// import {shark} from '../characters/char-parts';
-// import {hero} from '../characters/char-parts';
 import {mainHero} from '../screens/battle'
 import {enemy} from '../screens/battle'
 import {wasted} from '../screens/wasted';
 import {mode} from '../screens/menu';
 import win from '../screens/win';
 
-
 export const score = {value: 0};
-
 
 let requestAnimationFrame = window.requestAnimationFrame ||
                             window.mozRequestAnimationFrame ||
@@ -77,7 +71,6 @@ function squareAttack() {
                 } else {
                     $('.start_btn').bind('click', task);
                 }
-                //$('.start_btn').bind('click', task);
         });
             return 0;
         }
@@ -87,65 +80,7 @@ function squareAttack() {
         x += velocity;
         requestAnimationFrame(fallRect);
     }
-    
 
-    // function rageRect() {
-
-    //     opacity += delta;
-
-    //     if (opacity < 0.0) {
-    //         return 0;
-    //     }
-
-
-    //     if (opacity >= 1.0) {
-    //         delta = -0.01;
-    //     }
-
-    //     cvx.globalAlpha = opacity;
-
-    //     let rage = new Image();
-    //     rage.src = '../../images/characters/square/square-rage.png';
-
-    //     rage.onload = function(){
-    //     cvx.drawImage(rage, 1404, 643);   
-    //     }
-
-    //     requestAnimationFrame(rageRect);
-    // }
- 
-    // let yellowCube = new Image();
-    // yellowCube.src = '../../images/characters/square/yellow-cube.png';
-
-    // let greenCube = new Image();
-    // greenCube.src = '../../images/characters/square/green-cube.png';
-
-    // let cyanCube = new Image();
-    // cyanCube.src = '../../images/characters/square/cyan-cube.png';
-
-    // let purpleCube = new Image();
-    // purpleCube.src = '../../images/characters/square/purple-cube.png';
-
-    // yellowCube.onload = function(){
-    //     cvx.drawImage(yellowCube, -100, -100);   
-    // }
-
-    // greenCube.onload = function(){
-    //     cvx.drawImage(greenCube, -100, -100);   
-    // }
-
-    // purpleCube.onload = function(){
-    //     cvx.drawImage(purpleCube, -100, -100);   
-    // }
-
-    // cyanCube.onload = function(){
-    //     cvx.drawImage(cyanCube, -100, -100);   
-    // }
-
-    // let rage = new Image();
-    // rage.src = '../../images/characters/square/square-rage.png';
-    // let glasses = new Image();
-    // glasses.src = square.accessory;
     let yCubeY = 820;//500;
     let gCubeY = 810//560;
     let pCubeY = 780//560;
@@ -170,12 +105,6 @@ function squareAttack() {
         cvx.drawImage(images.heroBody, 150, 550); 
         cvx.drawImage(images.squareBody, 1400, 600);  
 
-
-        // yCubeX += 0.5; 
-        // gCubeX += 0.5; 
-        // pCubeX += 0.5 
-        // cCubeX += 0.5; 
-
         if (yCubeY >= 700 && flag === false) {
             
             yCubeY -= 1.2;
@@ -190,8 +119,6 @@ function squareAttack() {
             cCubeY += 1 + cubesAcc; 
             cubesAcc += 1.1;
         }
-
-        
 
         cvx.globalAlpha = opacity0;
         cvx.drawImage(images.yellowCube, yCubeX, yCubeY);
@@ -213,7 +140,6 @@ function squareAttack() {
         if (cubesAcc >= 40) {
             cubesAcc = 0.5;
 
-            //fallRect();
             return fallingRect();
         }
         
@@ -267,7 +193,6 @@ function squareAttack() {
         if (bigCubeY < 530) {
             requestAnimationFrame(fallingRect);
         }
-
     }
     
     let fadeRectOutFlag = true;
@@ -281,11 +206,8 @@ function squareAttack() {
         cvx.drawImage(images.heroBody, 150, 550); 
         cvx.drawImage(images.squareBody, 1400, 600); 
   
-
         cvx.globalAlpha = opacity1;
         cvx.drawImage(bigCube, 150, 526); 
-
-
 
         if (opacity1 <= 0.0) {   
             cvx.globalAlpha = 1; 
@@ -523,7 +445,6 @@ function fitzAttack(context) {
     function skilletFadeOut() {
         opacity += -0.01;
             
-        
         context.globalAlpha = 1.0;
         context.drawImage(images.background, 0, 0); 
         context.drawImage(images.heroHead, 260, 551); 
@@ -544,8 +465,6 @@ function fitzAttack(context) {
             context.drawImage(images.squareBody, 1400, 600); 
         }
         
-        
-
         if (opacity <= 0.0) { 
             context.globalAlpha = 1.0;
             context.drawImage(images.background, 0, 0);        

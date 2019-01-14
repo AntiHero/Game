@@ -7,7 +7,7 @@ export function chooseNickName() {
   <div class="nickname">
     <form class="form_nickname">
       <label for="nickname">Your Name</label>
-      <input class="nickname_input" autocomplete="off" placeholder="----" type="text" name="nickname" required="required">
+      <input class="nickname_input" autocomplete="off" placeholder="----" type="text" name="nickname" required="required" maxlenght="15">
       <input class="nickname_button" type="submit" value="ok">
     </form>
   </div>
