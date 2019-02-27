@@ -88,64 +88,6 @@ function squareAttack() {
         requestAnimationFrame(fallRect);
     }
     
-
-    // function rageRect() {
-
-    //     opacity += delta;
-
-    //     if (opacity < 0.0) {
-    //         return 0;
-    //     }
-
-
-    //     if (opacity >= 1.0) {
-    //         delta = -0.01;
-    //     }
-
-    //     cvx.globalAlpha = opacity;
-
-    //     let rage = new Image();
-    //     rage.src = '../../images/characters/square/square-rage.png';
-
-    //     rage.onload = function(){
-    //     cvx.drawImage(rage, 1404, 643);   
-    //     }
-
-    //     requestAnimationFrame(rageRect);
-    // }
- 
-    // let yellowCube = new Image();
-    // yellowCube.src = '../../images/characters/square/yellow-cube.png';
-
-    // let greenCube = new Image();
-    // greenCube.src = '../../images/characters/square/green-cube.png';
-
-    // let cyanCube = new Image();
-    // cyanCube.src = '../../images/characters/square/cyan-cube.png';
-
-    // let purpleCube = new Image();
-    // purpleCube.src = '../../images/characters/square/purple-cube.png';
-
-    // yellowCube.onload = function(){
-    //     cvx.drawImage(yellowCube, -100, -100);   
-    // }
-
-    // greenCube.onload = function(){
-    //     cvx.drawImage(greenCube, -100, -100);   
-    // }
-
-    // purpleCube.onload = function(){
-    //     cvx.drawImage(purpleCube, -100, -100);   
-    // }
-
-    // cyanCube.onload = function(){
-    //     cvx.drawImage(cyanCube, -100, -100);   
-    // }
-
-    // let rage = new Image();
-    // rage.src = '../../images/characters/square/square-rage.png';
-    // let glasses = new Image();
-    // glasses.src = square.accessory;
     let yCubeY = 820;//500;
     let gCubeY = 810//560;
     let pCubeY = 780//560;
@@ -170,12 +112,6 @@ function squareAttack() {
         cvx.drawImage(images.heroBody, 150, 550); 
         cvx.drawImage(images.squareBody, 1400, 600);  
 
-
-        // yCubeX += 0.5; 
-        // gCubeX += 0.5; 
-        // pCubeX += 0.5 
-        // cCubeX += 0.5; 
-
         if (yCubeY >= 700 && flag === false) {
             
             yCubeY -= 1.2;
@@ -198,17 +134,6 @@ function squareAttack() {
         cvx.drawImage(images.greenCube, gCubeX, gCubeY);  
         cvx.drawImage(images.purpleCube, pCubeX, pCubeY);  
         cvx.drawImage(images.cyanCube, cCubeX, cCubeY); 
-
-             
-        //cvx.drawImage(rage, 1404, 643);  
-
-        // if (yCubeY >= 560) {
-        //     //fadeRectOut();
-        //     return new Promise (function(resolve, reject) {
-        //         setTimeout(fadeRectOut, 1000);
-        //         resolve('success');
-        //     });
-        // }
 
         if (cubesAcc >= 40) {
             cubesAcc = 0.5;
@@ -296,14 +221,11 @@ function squareAttack() {
 
      
         }
-        console.log('shit');
- 
         if (opacity1 >= 0.0) {
             if (fadeRectOutFlag) {
                 fadeRectOutFlag = false;
                 
             }
-            console.log('govno');
             requestAnimationFrame(fadeRectOut);
         }
     }
@@ -402,40 +324,7 @@ function sharkAttack(context) {
             requestAnimationFrame(leshFadeOut);
         }
     }
-    // function leshFadeOut() {
-    //     opacity -= 0.01;
-
-    //     context.globalAlpha = 1.0;
-    //     context.setTransform(1,0,0,1,0,0);
-    //     context.drawImage(images.background, 0, 0); 
-    //     context.drawImage(images.heroHeadAttacked, 260, 551); 
-    //     context.drawImage(images.heroBody, 150, 550); 
-    //     context.drawImage(images.sharkBody, 1300, 600); 
-
-    //     context.globalAlpha = opacity;
-    //     console.log('blyeat');
-    //     console.log(x);
-    //     if (flag) {
-    //         //context.translate(356, 556);
-    //         context.rotate(24);
-    //         context.drawImage(images.leshenkoHit, 266, 546); 
-    //         //context.translate(-356, -556);
-            
-    //         flag = false;
-    //     }
-        
-    //     context.drawImage(images.leshenkoHit, 266, 546); 
-
-    //     if(opacity >= 0.9) {
-    //         requestAnimationFrame(leshFadeOut);
-    //     }
-
-    //     if(opacity < 0.0) {
-          
-    //         return 0;
-    //     }
-    // }
-
+ 
     function sharkAttackQueue() {
         
         return new Promise (function(resolve, reject) {
@@ -460,12 +349,6 @@ function eyeAttack(context) {
     let colorStart = 0;//= colors[Math.floor(Math.random()*(colors.length - 1))];
     let colorEnd = 0;
     let gradient = context.createLinearGradient(1427, 686, 330, 686);
-    // let opacity = 0.9
-    // gradient.addColorStop(`${opacity}`, colors[0]);
-    // gradient.addColorStop(`${opacity}`, colors[1]);
-    // gradient.addColorStop(`${opacity}`, colors[2]);
-    // gradient.addColorStop(`${opacity}`, colors[3]);
-    // gradient.addColorStop(`${opacity}`, colors[4]);
 
     function eyeShoot() {
         context.fillStyle = colors[colorStart = Math.floor(Math.random()*(colors.length - 1))];
@@ -560,25 +443,15 @@ function fitzAttack(context) {
             if (mode.value === 'easy') {
                 context.drawImage(images.squareBody, 1400, 600);
 
-                // score.value += 10;
-                // $('.score').text(`Score: ${score.value}`);
-
             } else if (mode.value === 'medium') {
                 context.drawImage(images.eyeBody, 1400, 550); 
-                // $('.enemy_health_bar').css('background', 'linear-gradient(to left, ' + '#da2525 ' + '50%, ' + 'rgba(0,0,0,0) ' + '50%)');
-                // score.value += 20;
-                // $('.score').text(`Score: ${score.value}`);
+      
   
             } else if (mode.value === 'hard'){
                 context.drawImage(images.sharkBody, 1300, 600); 
-                // score.value += 50;
-                // $('.score').text(`Score: ${score.value}`);
    
             } else {
                 context.drawImage(images.squareBody, 1400, 600); 
-                // score.value += 10;
-                // $('.score').text(`Score: ${score.value}`);
-   
             }
 
 
@@ -706,20 +579,9 @@ function eyeDmg(context) {
 }
 
 function fitzDmg(context) {
-    // let fitzDmg = new Image();
-    // fitzDmg.src = '../../images/characters/hero/hero-head-attacked.png';
 
-    // fitzDmg.onload = function () {
-    //     context.drawImage(fitzDmg, 260, 551);  
-    // }     
-    //context.drawImage(hero.heroHeadAttacked, 260, 551);
 }
 
-
-// let removeRect = new Promise ((resolve, reject) => {
-//     setTimeout(() => resolve('here'), 3500);
-// });
-// Rectangular attack helper functions //
 
 
 function removeRect(delay) {
